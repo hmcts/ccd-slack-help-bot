@@ -418,6 +418,7 @@ function openHelpRequestBlocks() {
                         option('Bulk scan', 'bulkscan'),
                         option('Bulk print', 'bulkprint'),
                         option('CCD'),
+                        option('Civil Damages', 'civildamages'),
                         option('Civil Unspecified', 'CivilUnspec'),
                         option('CMC'),
                         option('Divorce'),
