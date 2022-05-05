@@ -104,7 +104,7 @@ function convertEmail(email) {
     return email.split('@')[0]
 }
 
-async function createHelpRequestInJira(requestType, summary, project, user, labels) {
+async function createHelpRequestInJira(requestType, summary, project) {
     return await jira.addNewIssue({
         fields: {
             summary: summary,
@@ -114,40 +114,45 @@ async function createHelpRequestInJira(requestType, summary, project, user, labe
             project: {
                 id: project.id
             },
-            labels: ['created-from-slack', ...labels],
             description: undefined,
-            reporter: {
-                name: user // API docs say ID, but our jira version doesn't have that field yet, may need to change in future
-            },
             customfield_24700: [ { value: "No Environment" } ], // Environment - TODO Make this configurable and select appropriate value based on selection
-            fixVersions: [ { name: "CCD No Release Required" } ], // TODO Make this configurable
-            components: [ { name: "No Component" } ],
-            customfield_10004: 0 // Story points - TODO Make this configurable
+            components: [ { name: "No Component" } ]
         }
     });
 }
 
-async function createHelpRequest({
-                                     requestType,
-                                     summary,
-                                     userEmail,
-                                     labels
-                                 }) {
-    const user = convertEmail(userEmail)
+async function createHelpRequest(requestType) {
 
     const project = await jira.getProject(getJiraProject(requestType))
 
     // https://developer.atlassian.com/cloud/jira/platform/rest/v2/api-group-issues/#api-rest-api-2-issue-post
     // note: fields don't match 100%, our Jira version is a bit old (still a supported LTS though)
-    let result
-    try {
-        result = await createHelpRequestInJira(requestType, summary, project, user, labels);
-    } catch (err) {
-        // in case the user doesn't exist in Jira use the system user
-        result = await createHelpRequestInJira(requestType, summary, project, systemUser, labels);
-    }
-
+    let result = await createHelpRequestInJira(requestType, summary, project);
     return result.key
+}
+
+async function updateHelpRequestCommonFields(issueId, { userEmail, labels }) {
+    const user = convertEmail(userEmail)
+    
+    try {
+        await jira.updateIssue(issueId, buildFieldsForUpdate(user, labels))
+    } catch(err) {
+        await jira.updateIssue(issueId, buildFieldsForUpdate(systemUser, labels))
+    }
+}
+
+function buildFieldsForUpdate(reporter, labels) {
+    return {
+        update: {
+            reporter: {
+                name: reporter // API docs say ID, but our jira version doesn't have that field yet, may need to change in future
+            },
+            labels: ['created-from-slack', ...labels],
+            fixVersions: [ { name: "CCD No Release Required" } ], // TODO Make this configurable
+            components: [ { name: "No Component" } ],
+            customfield_10004: 0 // Story points - TODO Make this configurable
+        }
+    }
 }
 
 async function updateHelpRequestDescription(issueId, fields) {
@@ -178,6 +183,7 @@ module.exports.startHelpRequest = startHelpRequest
 module.exports.assignHelpRequest = assignHelpRequest
 module.exports.createHelpRequest = createHelpRequest
 module.exports.updateHelpRequestDescription = updateHelpRequestDescription
+module.exports.updateHelpRequestCommonFields = updateHelpRequestCommonFields
 module.exports.addCommentToHelpRequest = addCommentToHelpRequest
 module.exports.convertEmail = convertEmail
 module.exports.extractJiraId = extractJiraId
