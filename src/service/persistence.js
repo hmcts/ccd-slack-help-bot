@@ -142,7 +142,7 @@ async function updateHelpRequestCommonFields(issueId, { userEmail, labels }) {
 
 function buildFieldsForUpdate(reporter, labels) {
     return {
-        update: {
+        fields: {
             reporter: {
                 name: reporter // API docs say ID, but our jira version doesn't have that field yet, may need to change in future
             },
