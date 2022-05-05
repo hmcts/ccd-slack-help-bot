@@ -149,7 +149,7 @@ app.view('create_help_request', async ({ack, body, view, client}) => {
 
         const requestType = view.state.values.request_type.request_type.selected_option.value
 
-        const jiraId = await createHelpRequest(requestType)
+        const jiraId = await createHelpRequest(requestType, helpRequest.summary)
         
         await updateHelpRequestCommonFields(jiraId, {
             userEmail,

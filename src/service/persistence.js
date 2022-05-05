@@ -121,7 +121,7 @@ async function createHelpRequestInJira(requestType, summary, project) {
     });
 }
 
-async function createHelpRequest(requestType) {
+async function createHelpRequest(requestType, summary) {
 
     const project = await jira.getProject(getJiraProject(requestType))
 
