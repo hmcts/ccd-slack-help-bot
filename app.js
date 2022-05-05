@@ -23,7 +23,8 @@ const {
     resolveHelpRequest,
     searchForUnassignedOpenIssues,
     startHelpRequest,
-    updateHelpRequestDescription
+    updateHelpRequestDescription,
+    updateHelpRequestCommonFields
 } = require("./src/service/persistence");
 
 const app = new App({
@@ -148,9 +149,9 @@ app.view('create_help_request', async ({ack, body, view, client}) => {
 
         const requestType = view.state.values.request_type.request_type.selected_option.value
 
-        const jiraId = await createHelpRequest({
-            requestType,
-            summary: helpRequest.summary,
+        const jiraId = await createHelpRequest(requestType)
+        
+        await updateHelpRequestCommonFields(jiraId, {
             userEmail,
             labels: extractLabels(view.state.values)
         })
