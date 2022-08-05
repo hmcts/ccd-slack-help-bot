@@ -424,7 +424,7 @@ function openHelpRequestBlocks() {
                         option('Divorce'),
                         option('Domestic Abuse', "domesticabuse"),
                         option('No fault divorce', 'nfdivorce'),
-                        option('Ethos'),
+                        option('Employment Tribunals', 'et'),
                         option('Evidence Management', 'evidence'),
                         option('Expert UI', 'xui'),
                         option('Financial Remedy', 'finrem'),
