@@ -148,8 +148,7 @@ function buildFieldsForUpdate(reporter, labels) {
             },
             labels: ['created-from-slack', ...labels],
             fixVersions: [ { name: "CCD No Release Required" } ], // TODO Make this configurable
-            components: [ { name: "No Component" } ],
-            customfield_10004: 0 // Story points - TODO Make this configurable
+            components: [ { name: "No Component" } ]
         }
     }
 }
