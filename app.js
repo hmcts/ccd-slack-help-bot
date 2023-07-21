@@ -70,7 +70,7 @@ server.listen(port, () => {
 async function reopenAppHome(client, userId) {
     const results = await searchForUnassignedOpenIssues()
 
-    const parsedResults = results.issues.flatMap(result => {
+    const parsedResults = results.issues.slice(0, 5).flatMap(result => {
         return unassignedOpenIssue({
             summary: result.fields.summary,
             slackLink: extractSlackLinkFromText(result.fields.description),
