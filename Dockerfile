@@ -1,8 +1,8 @@
-FROM hmctspublic.azurecr.io/base/node:14-alpine
+FROM hmctspublic.azurecr.io/base/node:18-alpine
 
-COPY package*.json ./
+COPY --chown=hmcts:hmcts package*.json ./
 
-RUN npm ci --only=production
+RUN npm install --production
 
 COPY --chown=hmcts:hmcts . .
 
