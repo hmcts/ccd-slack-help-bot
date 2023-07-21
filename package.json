@@ -11,7 +11,7 @@
   "author": "CCD",
   "license": "MIT",
   "dependencies": {
-    "@hmcts/properties-volume": "0.0.13",
+    "@hmcts/properties-volume": "^1.0.0",
     "@slack/bolt": "^3.7.0",
     "config": "^3.3.6",
     "jira-client": "^6.23.0",
