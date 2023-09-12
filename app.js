@@ -189,7 +189,6 @@ app.view('create_help_request', async ({ack, body, view, client}) => {
 
 });
 
-
 // subscribe to 'app_mention' event in your App config
 // need app_mentions:read and chat:write scopes
 app.event('app_mention', async ({event, context, client, say}) => {
