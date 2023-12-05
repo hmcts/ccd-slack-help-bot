@@ -21,13 +21,13 @@ const supportConfig = {
         jiraDoneTransitionId: config.get('jira.cfts.done_transition_id')
     },
     hmc: {
-        reportChannel: config.get('slack.ccd.report_channel'),
-        reportChannelId: config.get('slack.ccd.report_channel_id'),
-        jiraProject: config.get('jira.ccd.project'),
-        issueTypeId: config.get('jira.ccd.issue_type_id'),
-        issueTypeName: config.get('jira.ccd.issue_type_name'),
-        jiraStartTransitionId: config.get('jira.ccd.start_transition_id'),
-        jiraDoneTransitionId: config.get('jira.ccd.done_transition_id')
+        reportChannel: config.get('slack.hmc.report_channel'),
+        reportChannelId: config.get('slack.hmc.report_channel_id'),
+        jiraProject: config.get('jira.hmc.project'),
+        issueTypeId: config.get('jira.hmc.issue_type_id'),
+        issueTypeName: config.get('jira.hmc.issue_type_name'),
+        jiraStartTransitionId: config.get('jira.hmc.start_transition_id'),
+        jiraDoneTransitionId: config.get('jira.hmc.done_transition_id')
     }
 }
 
