@@ -289,6 +289,7 @@ function openHelpRequestBlocks() {
                     "options": [
                         option('CCD Support', 'ccd'),
                         option('CFTS Level 2 Support', 'cfts'),
+                        option('HMC', 'hman'),
                     ],
                     "action_id": "request_type"
                 },
