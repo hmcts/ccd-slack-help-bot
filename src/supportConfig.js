@@ -19,6 +19,15 @@ const supportConfig = {
         issueTypeName: config.get('jira.cfts.issue_type_name'),
         jiraStartTransitionId: config.get('jira.cfts.start_transition_id'),
         jiraDoneTransitionId: config.get('jira.cfts.done_transition_id')
+    },
+    hmc: {
+        reportChannel: config.get('slack.hmc.report_channel'),
+        reportChannelId: config.get('slack.hmc.report_channel_id'),
+        jiraProject: config.get('jira.hmc.project'),
+        issueTypeId: config.get('jira.hmc.issue_type_id'),
+        issueTypeName: config.get('jira.hmc.issue_type_name'),
+        jiraStartTransitionId: config.get('jira.hmc.start_transition_id'),
+        jiraDoneTransitionId: config.get('jira.hmc.done_transition_id')
     }
 }
 
