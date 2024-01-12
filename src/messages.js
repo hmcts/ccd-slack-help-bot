@@ -289,7 +289,7 @@ function openHelpRequestBlocks() {
                     "options": [
                         option('CCD Support', 'ccd'),
                         option('CFTS Level 2 Support', 'cfts'),
-                        option('HMC Support', 'hman'),
+                        option('HMC Support', 'hmc'),
                     ],
                     "action_id": "request_type"
                 },
