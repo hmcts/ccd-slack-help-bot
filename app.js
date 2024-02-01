@@ -150,13 +150,14 @@ app.view('create_help_request', async ({ack, body, view, client}) => {
         const requestType = view.state.values.request_type.request_type.selected_option.value
 
         const jiraId = await createHelpRequest(requestType, helpRequest.summary)
-        
+        console.log(`Jira created ${jiraId}`)
         await updateHelpRequestCommonFields(jiraId, {
             userEmail,
             labels: extractLabels(view.state.values)
         })
 
         const reportChannel = getReportChannel(requestType)
+        console.log(`Report Channel is ${reportChannel}`)
         console.log(`Publishing request ${jiraId} to channel ${reportChannel}`)
         const result = await client.chat.postMessage({
             channel: reportChannel,
@@ -166,14 +167,14 @@ app.view('create_help_request', async ({ack, body, view, client}) => {
                 jiraId
             })
         });
-
+        console.log(`Posting messages to channel...`)
         await client.chat.postMessage({
             channel: reportChannel,
             thread_ts: result.message.ts,
             text: 'New support request raised',
             blocks: helpRequestDetails(helpRequest)
         });
-
+        console.log(`Message posted to channel...`)
         const permaLink = (await client.chat.getPermalink({
             channel: result.channel,
             'message_ts': result.message.ts
@@ -183,6 +184,7 @@ app.view('create_help_request', async ({ack, body, view, client}) => {
             ...helpRequest,
             slackLink: permaLink
         })
+      console.log(`Updated Description`)
     } catch (error) {
         console.error(error);
     }
