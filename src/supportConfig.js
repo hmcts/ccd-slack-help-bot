@@ -10,6 +10,8 @@ const supportConfig = {
         issueTypeName: config.get('jira.ccd.issue_type_name'),
         jiraStartTransitionId: config.get('jira.ccd.start_transition_id'),
         jiraDoneTransitionId: config.get('jira.ccd.done_transition_id')
+        fixedVersion: "CCD No Release Required"
+        components: "No Component"
     },
     cfts: {
         reportChannel: config.get('slack.cfts.report_channel'),
@@ -19,6 +21,8 @@ const supportConfig = {
         issueTypeName: config.get('jira.cfts.issue_type_name'),
         jiraStartTransitionId: config.get('jira.cfts.start_transition_id'),
         jiraDoneTransitionId: config.get('jira.cfts.done_transition_id')
+        fixedVersion: "CCD No Release Required"
+        components: "No Component"
     },
     hmc: {
         reportChannel: config.get('slack.hmc.report_channel'),
@@ -28,6 +32,8 @@ const supportConfig = {
         issueTypeName: config.get('jira.hmc.issue_type_name'),
         jiraStartTransitionId: config.get('jira.hmc.start_transition_id'),
         jiraDoneTransitionId: config.get('jira.hmc.done_transition_id')
+        fixedVersion: "HMC No Release Required"
+        components: "HMC"
     }
 }
 
@@ -61,6 +67,14 @@ function getJiraProjects() {
     return getConfigKeys().map(key => supportConfig[key].jiraProject)
 }
 
+function getFixedVersion() {
+    return getConfigKeys().map(key => supportConfig[key].fixedVersion)
+}
+
+function getComponents() {
+    return getConfigKeys().map(key => supportConfig[key].components)
+}
+
 function getIssueTypeNames() {
     return getConfigKeys().map(key => supportConfig[key].issueTypeName)
 }
@@ -92,3 +106,5 @@ module.exports.getIssueTypeNames = getIssueTypeNames
 module.exports.getIssueTypeId = getIssueTypeId
 module.exports.getJiraStartTransitionId = getJiraStartTransitionId
 module.exports.getJiraDoneTransitionId = getJiraDoneTransitionId
+module.exports.getComponents = getComponents
+module.exports.getFixedVersion = getFixedVersion
