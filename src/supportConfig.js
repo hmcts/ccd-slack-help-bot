@@ -9,8 +9,8 @@ const supportConfig = {
         issueTypeId: config.get('jira.ccd.issue_type_id'),
         issueTypeName: config.get('jira.ccd.issue_type_name'),
         jiraStartTransitionId: config.get('jira.ccd.start_transition_id'),
-        jiraDoneTransitionId: config.get('jira.ccd.done_transition_id')
-        fixedVersion: "CCD No Release Required"
+        jiraDoneTransitionId: config.get('jira.ccd.done_transition_id'),
+        fixedVersion: "CCD No Release Required",
         components: "No Component"
     },
     cfts: {
@@ -20,8 +20,8 @@ const supportConfig = {
         issueTypeId: config.get('jira.cfts.issue_type_id'),
         issueTypeName: config.get('jira.cfts.issue_type_name'),
         jiraStartTransitionId: config.get('jira.cfts.start_transition_id'),
-        jiraDoneTransitionId: config.get('jira.cfts.done_transition_id')
-        fixedVersion: "CCD No Release Required"
+        jiraDoneTransitionId: config.get('jira.cfts.done_transition_id'),
+        fixedVersion: "CCD No Release Required",
         components: "No Component"
     },
     hmc: {
@@ -31,8 +31,8 @@ const supportConfig = {
         issueTypeId: config.get('jira.hmc.issue_type_id'),
         issueTypeName: config.get('jira.hmc.issue_type_name'),
         jiraStartTransitionId: config.get('jira.hmc.start_transition_id'),
-        jiraDoneTransitionId: config.get('jira.hmc.done_transition_id')
-        fixedVersion: "HMC No Release Required"
+        jiraDoneTransitionId: config.get('jira.hmc.done_transition_id'),
+        fixedVersion: "HMC No Release Required",
         components: "HMC"
     }
 }
@@ -67,12 +67,12 @@ function getJiraProjects() {
     return getConfigKeys().map(key => supportConfig[key].jiraProject)
 }
 
-function getFixedVersion() {
-    return getConfigKeys().map(key => supportConfig[key].fixedVersion)
+function getFixedVersion(requestType) {
+    return supportConfig[requestType].fixedVersion
 }
 
-function getComponents() {
-    return getConfigKeys().map(key => supportConfig[key].components)
+function getComponents(requestType) {
+    return supportConfig[requestType].components
 }
 
 function getIssueTypeNames() {
