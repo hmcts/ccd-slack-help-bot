@@ -153,9 +153,8 @@ app.view('create_help_request', async ({ack, body, view, client}) => {
         console.log(`Jira created ${jiraId}`)
         await updateHelpRequestCommonFields(jiraId, {
             userEmail,
-            labels: extractLabels(view.state.values),
-            requestType
-        })
+            labels: extractLabels(view.state.values)
+        }, requestType)
 
         const reportChannel = getReportChannel(requestType)
         console.log(`Report Channel is ${reportChannel}`)
