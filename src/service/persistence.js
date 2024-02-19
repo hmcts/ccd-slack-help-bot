@@ -132,7 +132,7 @@ async function createHelpRequest(requestType, summary) {
     return result.key
 }
 
-async function updateHelpRequestCommonFields(issueId, { userEmail, labels }) {
+async function updateHelpRequestCommonFields(issueId, { userEmail, labels }, requestType) {
     const user = convertEmail(userEmail)
     
     try {
