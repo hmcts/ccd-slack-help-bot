@@ -12,7 +12,9 @@ const {
     getIssueTypeId,
     getJiraProject,
     getJiraStartTransitionId,
-    getJiraDoneTransitionId
+    getJiraDoneTransitionId,
+    getComponents,
+    getFixedVersion
 } = require('../supportConfig');
 
 const jira = new JiraApi({
@@ -134,21 +136,21 @@ async function updateHelpRequestCommonFields(issueId, { userEmail, labels }) {
     const user = convertEmail(userEmail)
     
     try {
-        await jira.updateIssue(issueId, buildFieldsForUpdate(user, labels))
+        await jira.updateIssue(issueId, buildFieldsForUpdate(user, labels, requestType))
     } catch(err) {
-        await jira.updateIssue(issueId, buildFieldsForUpdate(systemUser, labels))
+        await jira.updateIssue(issueId, buildFieldsForUpdate(systemUser, labels, requestType))
     }
 }
 
-function buildFieldsForUpdate(reporter, labels) {
+function buildFieldsForUpdate(reporter, labels, requestType) {
     return {
         fields: {
             reporter: {
                 name: reporter // API docs say ID, but our jira version doesn't have that field yet, may need to change in future
             },
             labels: ['created-from-slack', ...labels],
-            fixVersions: [ { name: "CCD No Release Required" } ], // TODO Make this configurable
-            components: [ { name: "No Component" } ]
+            fixVersions: [ { name: getFixedVersion(requestType) } ],
+            components: [ { name: getComponents(requestType) } ]
         }
     }
 }
