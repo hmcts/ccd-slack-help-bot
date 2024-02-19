@@ -149,8 +149,8 @@ function buildFieldsForUpdate(reporter, labels, requestType) {
                 name: reporter // API docs say ID, but our jira version doesn't have that field yet, may need to change in future
             },
             labels: ['created-from-slack', ...labels],
-            fixVersions: [ getFixedVersion(requestType) ],
-            components: [ getComponents(requestType) ]
+            fixVersions: [ { name: getFixedVersion(requestType) } ],
+            components: [ { name: getComponents(requestType) } ]
         }
     }
 }
