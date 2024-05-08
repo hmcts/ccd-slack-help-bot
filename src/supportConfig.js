@@ -34,7 +34,18 @@ const supportConfig = {
         jiraDoneTransitionId: config.get('jira.hmc.done_transition_id'),
         fixedVersion: "HMC No Release Required",
         components: "HMC"
-    }
+    },
+    xui: {
+        reportChannel: config.get('slack.xui.report_channel'),
+        reportChannelId: config.get('slack.xui.report_channel_id'),
+        jiraProject: config.get('jira.xui.project'),
+        issueTypeId: config.get('jira.xui.issue_type_id'),
+        issueTypeName: config.get('jira.xui.issue_type_name'),
+        jiraStartTransitionId: config.get('jira.xui.start_transition_id'),
+        jiraDoneTransitionId: config.get('jira.xui.done_transition_id'),
+        fixedVersion: "CCD No Release Required",
+        components: "No Component"
+        }
 }
 
 const extractProjectRegex = new RegExp(`((${getJiraProjects().join('|')})-[\\d]+)`)

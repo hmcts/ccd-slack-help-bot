@@ -479,9 +479,272 @@ function openHelpRequestBlocks() {
     }
 }
 
+function openBannerRequestBlocks() {
+    return {
+        "title": {
+            "type": "plain_text",
+            "text": "Support request"
+        },
+        "submit": {
+            "type": "plain_text",
+            "text": "Submit"
+        },
+        "blocks": [
+            {
+                "type": "input",
+                "block_id": "request_type",
+                "element": {
+                    "type": "radio_buttons",
+                    "options": [
+                        option('XUI Banner Message', 'xui'),
+                    ],
+                    "action_id": "request_type"
+                },
+                "label": {
+                    "type": "plain_text",
+                    "text": "Request type"
+                }
+            },
+            {
+                "type": "divider"
+            },
+            {
+                "type": "input",
+                "block_id": "englishPhrase",
+                "element": {
+                    "type": "plain_text_input",
+                    "action_id": "englishPhrase",
+                    "placeholder": {
+                        "type": "plain_text",
+                        "text": "English Phrase"
+                    }
+                },
+                "label": {
+                    "type": "plain_text",
+                    "text": "englishPhrase"
+                }
+            },
+            {
+                "type": "input",
+                "block_id": "welshPhrase",
+                "element": {
+                    "type": "plain_text_input",
+                    "action_id": "welshPhrase",
+                    "placeholder": {
+                        "type": "plain_text",
+                        "text": "Welsh Phrase"
+                    }
+                },
+                "label": {
+                    "type": "plain_text",
+                    "text": "welshPhrase"
+                }
+            },
+            {
+                "type": "section",
+                "block_id": "xuiComponent",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": " In what ExUI component should the message be published?"
+                },
+                "accessory": {
+                  "action_id": "xuiComponent",
+                  "type": "static_select",
+                  "placeholder": {
+                    "type": "plain_text",
+                    "text": "Select an item"
+                  },
+                  "options": [
+                    {
+                      "text": {
+                        "type": "plain_text",
+                        "text": "*Manage Case (MC)*"
+                      },
+                      "value": "mc"
+                    },
+                    {
+                      "text": {
+                        "type": "plain_text",
+                        "text": "*Manage Org (MO)*"
+                      },
+                      "value": "mo"
+                    },
+                    {
+                      "text": {
+                        "type": "plain_text",
+                        "text": "*both*"
+                      },
+                      "value": "both"
+                    }
+                  ]
+                }
+              },
+            {
+                "type": "input",
+                "block_id": "Roles",
+                "optional": true,
+                "element": {
+                    "type": "plain_text_input",
+                    "action_id": "roles",
+                    "placeholder": {
+                        "type": "plain_text",
+                        "text": "what group of users should see the message? Professional Users / Staff / Judiciary"
+                    }
+                },
+                "label": {
+                    "type": "plain_text",
+                    "text": "roles"
+                }
+            },{
+                "type": "input",
+                "block_id": "Roles",
+                "optional": true,
+                "element": {
+                    "type": "plain_text_input",
+                    "action_id": "roles",
+                    "placeholder": {
+                        "type": "plain_text",
+                        "text": "if known what idam roles is this applicable for"
+                    }
+                },
+                "label": {
+                    "type": "plain_text",
+                    "text": "roles"
+                }
+            },
+            {
+                "type": "section",
+                "block_id": "startDate",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "Pick a start date for the message."
+                },
+                "accessory": {
+                  "type": "datepicker",
+                  "action_id": "startDate",
+                  "initial_date": new Date().toISOString().slice(0, 10),
+                  "placeholder": {
+                    "type": "plain_text",
+                    "text": "Select a date"
+                  }
+                }
+              },
+              {
+                "type": "section",
+                "block_id": "endDate",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "Pick an end date for the message."
+                },
+                "accessory": {
+                  "type": "datepicker",
+                  "action_id": "endDate",
+                  "initial_date": new Date().toISOString().slice(0, 10),
+                  "placeholder": {
+                    "type": "plain_text",
+                    "text": "Select a date"
+                  }
+                }
+              },
+            {
+                "type": "input",
+                "block_id": "environment",
+                "optional": true,
+                "element": {
+                    "type": "static_select",
+                    "placeholder": {
+                        "type": "plain_text",
+                        "text": "Choose an environment",
+                        "emoji": true
+                    },
+                    "options": [
+                        option('AAT / Staging', 'staging'),
+                        option('Preview / Dev', 'dev'),
+                        option('Production'),
+                        option('Perftest / Test', 'test'),
+                        option('Demo'),
+                        option('Demo INT', 'demo-int'),
+                        option('WA INT', 'wa-int'),
+                        option('ITHC'),
+                        option('N/A', 'none'),
+                    ],
+                    "action_id": "environment"
+                },
+                "label": {
+                    "type": "plain_text",
+                    "text": "Environment",
+                    "emoji": true
+                }
+            },
+            {
+                "type": "input",
+                "block_id": "team",
+                "element": {
+                    "type": "static_select",
+                    "placeholder": {
+                        "type": "plain_text",
+                        "text": "Select other if missing",
+                        "emoji": true
+                    },
+                    "options": [
+                        option('Access Management', 'am'),
+                        option('Adoption'),
+                        option('Architecture'),
+                        option('Bulk scan', 'bulkscan'),
+                        option('Bulk print', 'bulkprint'),
+                        option('CCD'),
+                        option('Civil Damages', 'civildamages'),
+                        option('Civil Unspecified', 'CivilUnspec'),
+                        option('CMC'),
+                        option('Divorce'),
+                        option('Domestic Abuse', "domesticabuse"),
+                        option('No fault divorce', 'nfdivorce'),
+                        option('Employment Tribunals', 'et'),
+                        option('Ethos'),
+                        option('Evidence Management', 'evidence'),
+                        option('Expert UI', 'xui'),
+                        option('FaCT'),
+                        option('Fee & Pay', 'feeAndPay'),
+                        option('Financial Remedy', 'finrem'),
+                        option('FPLA'),
+                        option('Family Private Law', 'FPRL'),
+                        option('Family Public Law', 'FPL'),
+                        option('Heritage'),
+                        option('HMI'),
+                        option('Management Information', 'mi'),
+                        option('Immigration and Asylum', 'iac'),
+                        option('IDAM'),
+                        option('Other'),
+                        option('Private Law','private-law'),
+                        option('Probate'),
+                        option('Reference Data', 'refdata'),
+                        option('Reform Software Engineering', 'reform-software-engineering'),
+                        option('Security Operations or Secure design', 'security'),
+                        option('SSCS'),
+                        option('PayBubble'),
+                        option('PET'),
+                        option('Work Allocation', 'workallocation'),
+                    ],
+                    "action_id": "team"
+                },
+                "label": {
+                    "type": "plain_text",
+                    "text": "Which team are you from?",
+                    "emoji": true
+                }
+            }
+
+        ],
+        "type": "modal",
+        "callback_id": "create_banner_request"
+    }
+}
+
+
 module.exports.appHomeUnassignedIssues = appHomeUnassignedIssues;
 module.exports.unassignedOpenIssue = unassignedOpenIssue;
 module.exports.helpRequestRaised = helpRequestRaised;
 module.exports.helpRequestDetails = helpRequestDetails;
 module.exports.openHelpRequestBlocks = openHelpRequestBlocks;
+module.exports.openBannerRequestBlocks = openBannerRequestBlocks;
 module.exports.extractSlackLinkFromText = extractSlackLinkFromText;

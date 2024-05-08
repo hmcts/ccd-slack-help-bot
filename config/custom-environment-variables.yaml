@@ -8,6 +8,9 @@ slack:
   hmc:
     report_channel: HMC_SLACK_REPORT_CHANNEL
     report_channel_id: HMC_SLACK_REPORT_CHANNEL_ID
+  xui:
+    report_channel: XUI_SLACK_REPORT_CHANNEL
+    report_channel_id: XUI_SLACK_REPORT_CHANNEL_ID
 jira:
   ccd:
     start_transition_id: CCD_JIRA_START_TRANSITION_ID
@@ -27,6 +30,12 @@ jira:
     project: HMC_JIRA_PROJECT
     issue_type_id: HMC_JIRA_ISSUE_TYPE_ID
     issue_type_name: HMC_JIRA_ISSUE_TYPE_NAME
+  xui:
+    start_transition_id: XUI_JIRA_START_TRANSITION_ID
+    done_transition_id: XUI_JIRA_DONE_TRANSITION_ID
+    project: XUI_JIRA_PROJECT
+    issue_type_id: XUI_JIRA_ISSUE_TYPE_ID
+    issue_type_name: XUI_JIRA_ISSUE_TYPE_NAME
 
 secrets:
   cftptl-intsvc:
