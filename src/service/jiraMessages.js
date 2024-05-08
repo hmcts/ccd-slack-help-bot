@@ -9,7 +9,7 @@ function mapFieldsToDescription(
     {
         references,
         environment,
-        analysisdescription,
+        description,
         analysis,
         slackLink,
         englishPhrase,
