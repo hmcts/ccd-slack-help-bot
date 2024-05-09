@@ -648,36 +648,6 @@ function openBannerRequestBlocks() {
               },
             {
                 "type": "input",
-                "block_id": "environment",
-                "optional": true,
-                "element": {
-                    "type": "static_select",
-                    "placeholder": {
-                        "type": "plain_text",
-                        "text": "Choose an environment",
-                        "emoji": true
-                    },
-                    "options": [
-                        option('AAT / Staging', 'staging'),
-                        option('Preview / Dev', 'dev'),
-                        option('Production'),
-                        option('Perftest / Test', 'test'),
-                        option('Demo'),
-                        option('Demo INT', 'demo-int'),
-                        option('WA INT', 'wa-int'),
-                        option('ITHC'),
-                        option('N/A', 'none'),
-                    ],
-                    "action_id": "environment"
-                },
-                "label": {
-                    "type": "plain_text",
-                    "text": "Environment",
-                    "emoji": true
-                }
-            },
-            {
-                "type": "input",
                 "block_id": "team",
                 "element": {
                     "type": "static_select",
