@@ -228,6 +228,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
 
         const bannerRequest = {
             user,
+            chnageReference: view.state.values.changeReference.title.value,
             englishPhrase: view.state.values.englishPhrase.title.value,
             welshPhrase: view.state.values.welshPhrase.title.value,
             xuiComponent: view.state.values.xuiComponent.xuiComponent.selected_option.text.text,
