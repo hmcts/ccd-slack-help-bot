@@ -581,11 +581,11 @@ function openBannerRequestBlocks() {
               },
             {
                 "type": "input",
-                "block_id": "Roles",
+                "block_id": "users",
                 "optional": true,
                 "element": {
                     "type": "plain_text_input",
-                    "action_id": "roles",
+                    "action_id": "users",
                     "placeholder": {
                         "type": "plain_text",
                         "text": "what group of users should see the message? Professional Users / Staff / Judiciary"
@@ -593,11 +593,11 @@ function openBannerRequestBlocks() {
                 },
                 "label": {
                     "type": "plain_text",
-                    "text": "roles"
+                    "text": "users"
                 }
             },{
                 "type": "input",
-                "block_id": "Roles",
+                "block_id": "roles",
                 "optional": true,
                 "element": {
                     "type": "plain_text_input",

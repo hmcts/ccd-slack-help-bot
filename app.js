@@ -231,6 +231,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
             englishPhrase: view.state.values.englishPhrase.title.value,
             welshPhrase: view.state.values.welshPhrase.title.value,
             xuiComponent: view.state.values.xuiComponent.xuiComponent.selected_option.text.text,
+            users: view.state.values.users?.title?.value || "None",
             roles: view.state.values.roles?.title?.value || "None",
             startdate: view.state.values.startDate.title.value,
             enddate: view.state.values.endDate.title.value,
