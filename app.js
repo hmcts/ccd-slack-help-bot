@@ -228,7 +228,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
 
         const bannerRequest = {
             user,
-            chnageReference: view.state.values.changeReference.title.value,
+            changeReference: view.state.values.changeReference.title.value,
             englishPhrase: view.state.values.englishPhrase.title.value,
             welshPhrase: view.state.values.welshPhrase.title.value,
             xuiComponent: view.state.values.xuiComponent.xuiComponent.selected_option.text.text,
@@ -239,8 +239,9 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
         }
 
         const requestType = view.state.values.request_type.request_type.selected_option.value
+        const summary = bannerRequest.start + " " + values.team.team.selected_option.value
 
-        const jiraId = await createBannerRequest(requestType, bannerRequest.summary)
+        const jiraId = await createBannerRequest(requestType, summary)
         console.log(`Jira created ${jiraId}`)
         const labels = extractLabels(view.state.values)
         labels.push ("xui-banner-messages")
