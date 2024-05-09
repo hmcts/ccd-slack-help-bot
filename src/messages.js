@@ -510,10 +510,27 @@ function openBannerRequestBlocks() {
             },
             {
                 "type": "input",
+                "block_id": "changeReference",
+                "optional": true,
+                "element": {
+                    "type": "plain_text_input",
+                    "action_id": "title",
+                    "placeholder": {
+                        "type": "plain_text",
+                        "text": "Change Reference"
+                    }
+                },
+                "label": {
+                    "type": "plain_text",
+                    "text": "Change Reference"
+                }
+            },
+            {
+                "type": "input",
                 "block_id": "englishPhrase",
                 "element": {
                     "type": "plain_text_input",
-                    "action_id": "englishPhrase",
+                    "action_id": "title",
                     "placeholder": {
                         "type": "plain_text",
                         "text": "English Phrase"
@@ -529,7 +546,7 @@ function openBannerRequestBlocks() {
                 "block_id": "welshPhrase",
                 "element": {
                     "type": "plain_text_input",
-                    "action_id": "welshPhrase",
+                    "action_id": "title",
                     "placeholder": {
                         "type": "plain_text",
                         "text": "Welsh Phrase"
@@ -548,7 +565,7 @@ function openBannerRequestBlocks() {
                   "text": " In what ExUI component should the message be published?"
                 },
                 "accessory": {
-                  "action_id": "xuiComponent",
+                  "action_id": "title",
                   "type": "static_select",
                   "placeholder": {
                     "type": "plain_text",
@@ -585,7 +602,7 @@ function openBannerRequestBlocks() {
                 "optional": true,
                 "element": {
                     "type": "plain_text_input",
-                    "action_id": "users",
+                    "action_id": "title",
                     "placeholder": {
                         "type": "plain_text",
                         "text": "what group of users should see the message? Professional Users / Staff / Judiciary"
@@ -601,7 +618,7 @@ function openBannerRequestBlocks() {
                 "optional": true,
                 "element": {
                     "type": "plain_text_input",
-                    "action_id": "roles",
+                    "action_id": "title",
                     "placeholder": {
                         "type": "plain_text",
                         "text": "if known what idam roles is this applicable for"
@@ -621,7 +638,7 @@ function openBannerRequestBlocks() {
                 },
                 "accessory": {
                   "type": "datepicker",
-                  "action_id": "startDate",
+                  "action_id": "title",
                   "initial_date": new Date().toISOString().slice(0, 10),
                   "placeholder": {
                     "type": "plain_text",
@@ -638,7 +655,7 @@ function openBannerRequestBlocks() {
                 },
                 "accessory": {
                   "type": "datepicker",
-                  "action_id": "endDate",
+                  "action_id": "title",
                   "initial_date": new Date().toISOString().slice(0, 10),
                   "placeholder": {
                     "type": "plain_text",
