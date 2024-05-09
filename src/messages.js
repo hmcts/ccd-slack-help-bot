@@ -565,7 +565,7 @@ function openBannerRequestBlocks() {
                   "text": " In what ExUI component should the message be published?"
                 },
                 "accessory": {
-                  "action_id": "title",
+                  "action_id": "component",
                   "type": "static_select",
                   "placeholder": {
                     "type": "plain_text",
