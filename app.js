@@ -241,7 +241,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
         const requestType = view.state.values.request_type.request_type.selected_option.value
         const summary = bannerRequest.startdate + " " + view.state.values.team.team.selected_option.value
 
-        const jiraId = await createBannerRequest(requestType, summary)
+        const jiraId = await createHelpRequest(requestType, summary)
         console.log(`Jira created ${jiraId}`)
         const labels = extractLabels(view.state.values)
         labels.push ("xui-banner-messages")
