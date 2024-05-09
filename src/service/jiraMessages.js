@@ -33,7 +33,7 @@ ${optionalField('Welsh Phrase', welshPhrase)}
 
 ${optionalField('Xui Component', xuiComponent)}
 
-${optionalField('Users', roles)}
+${optionalField('Users', users)}
 
 ${optionalField('Roles', roles)}
 
