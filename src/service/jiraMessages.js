@@ -11,21 +11,37 @@ function mapFieldsToDescription(
         environment,
         description,
         analysis,
-        slackLink
+        slackLink,
+        englishPhrase,
+        welshPhrase,
+        xuiComponent,
+        roles,
+        startdate,
+        enddate
     }) {
     return `
 h6. _This is an automatically generated ticket created from Slack, do not reply or update in here, [view in Slack|${slackLink}]_
 
 ${optionalField('Jira/ServiceNow references', references)}
 
-
 ${optionalField('Environment', environment)}
 
+${optionalField('English Phrase', englishPhrase)}
+
+${optionalField('Welsh Phrase', welshPhrase)}
+
+${optionalField('Xui Component', xuiComponent)}
+
+${optionalField('Roles', roles)}
+
+${optionalField('Start Date', startdate)}
+
+${optionalField('End Date', enddate)}
+
 *Issue description*
+${optionalField(description)}
 
-${description}
-
-*Analysis done so far*: ${analysis}
+*Analysis done so far*: ${optionalField(analysis)}
 `
 }
 

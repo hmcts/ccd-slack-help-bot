@@ -10,6 +10,7 @@ const {
     helpRequestDetails,
     helpRequestRaised,
     openHelpRequestBlocks,
+    openBannerRequestBlocks,
     unassignedOpenIssue,
 } = require('./src/messages');
 const {App, LogLevel, SocketModeReceiver} = require('@slack/bolt');
@@ -113,6 +114,28 @@ app.shortcut('launch_shortcut', async ({shortcut, body, ack, context, client}) =
         await client.views.open({
             trigger_id: shortcut.trigger_id,
             view: openHelpRequestBlocks()
+            // add banner here 
+        });
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+// Global Shortcut example
+// setup global shortcut in App config with `launch_banner_shortcut` as callback id
+// add `commands` scope
+app.shortcut('launch_banner_shortcut', async ({shortcut, body, ack, context, client}) => {
+    try {
+        // Acknowledge shortcut request
+        await ack();
+
+        // Un-comment if you want the JSON for block-kit builder (https://app.slack.com/block-kit-builder/T1L0WSW9F)
+        // console.log(JSON.stringify(openHelpRequestBlocks().blocks))
+
+        await client.views.open({
+            trigger_id: shortcut.trigger_id,
+            view: openBannerRequestBlocks()
+            // add banner here 
         });
     } catch (error) {
         console.error(error);
@@ -172,6 +195,74 @@ app.view('create_help_request', async ({ack, body, view, client}) => {
             channel: reportChannel,
             thread_ts: result.message.ts,
             text: 'New support request raised',
+            blocks: helpRequestDetails(helpRequest)
+        });
+        console.log(`Message posted to channel...`)
+        const permaLink = (await client.chat.getPermalink({
+            channel: result.channel,
+            'message_ts': result.message.ts
+        })).permalink
+
+        await updateHelpRequestDescription(jiraId, {
+            ...helpRequest,
+            slackLink: permaLink
+        })
+      console.log(`Updated Description`)
+    } catch (error) {
+        console.error(error);
+    }
+
+});
+
+app.view('create_banner_request', async ({ack, body, view, client}) => {
+    // Acknowledge the view_submission event
+    await ack();
+
+    const user = body.user.id;
+
+    // Message the user
+    try {
+        const userEmail = (await client.users.profile.get({
+            user
+        })).profile.email
+
+        const bannerRequest = {
+            user,
+            englishPhrase: view.state.values.englishPhrase.title.value,
+            welshPhrase: view.state.values.welshPhrase.title.value,
+            xuiComponent: view.state.values.xuiComponent.xuiComponent.selected_option.text.text,
+            roles: view.state.values.roles?.title?.value || "None",
+            startdate: view.state.values.startDate.title.value,
+            enddate: view.state.values.endDate.title.value,
+        }
+
+        const requestType = view.state.values.request_type.request_type.selected_option.value
+
+        const jiraId = await createBannerRequest(requestType, bannerRequest.summary)
+        console.log(`Jira created ${jiraId}`)
+        const labels = extractLabels(view.state.values)
+        labels.push ("xui-banner-messages")
+        await updateHelpRequestCommonFields(jiraId, {
+            userEmail,
+            labels: labels
+        }, requestType)
+
+        const reportChannel = getReportChannel(requestType)
+        console.log(`Report Channel is ${reportChannel}`)
+        console.log(`Publishing request ${jiraId} to channel ${reportChannel}`)
+        const result = await client.chat.postMessage({
+            channel: reportChannel,
+            text: 'New banner request raised',
+            blocks: helpRequestRaised({
+                ...bannerRequest,
+                jiraId
+            })
+        });
+        console.log(`Posting messages to channel...`)
+        await client.chat.postMessage({
+            channel: reportChannel,
+            thread_ts: result.message.ts,
+            text: 'New banner request raised',
             blocks: helpRequestDetails(helpRequest)
         });
         console.log(`Message posted to channel...`)
