@@ -15,6 +15,7 @@ function mapFieldsToDescription(
         englishPhrase,
         welshPhrase,
         xuiComponent,
+        users,
         roles,
         startdate,
         enddate
@@ -31,6 +32,8 @@ ${optionalField('English Phrase', englishPhrase)}
 ${optionalField('Welsh Phrase', welshPhrase)}
 
 ${optionalField('Xui Component', xuiComponent)}
+
+${optionalField('Users', roles)}
 
 ${optionalField('Roles', roles)}
 
