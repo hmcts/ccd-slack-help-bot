@@ -239,7 +239,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
         }
 
         const requestType = view.state.values.request_type.request_type.selected_option.value
-        const summary = bannerRequest.start + " " + values.team.team.selected_option.value
+        const summary = bannerRequest.startdate + " " + values.team.team.selected_option.value
 
         const jiraId = await createBannerRequest(requestType, summary)
         console.log(`Jira created ${jiraId}`)
