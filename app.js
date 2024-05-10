@@ -234,7 +234,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
             xuiComponent: view.state.values.xuiComponent.component.selected_option.text.text,
             users: view.state.values.users?.title?.value || "None",
             roles: view.state.values.roles?.title?.value || "None",
-            startdate: view.state.values.startDate.title.value,
+            startdate: view.state.values.startDate.selected_option.text.text,
             enddate: view.state.values.endDate.title.value,
             priority: "Medium",
         }
