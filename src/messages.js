@@ -538,7 +538,7 @@ function openBannerRequestBlocks() {
                 },
                 "label": {
                     "type": "plain_text",
-                    "text": "englishPhrase"
+                    "text": "English Phrase"
                 }
             },
             {
@@ -554,7 +554,7 @@ function openBannerRequestBlocks() {
                 },
                 "label": {
                     "type": "plain_text",
-                    "text": "welshPhrase"
+                    "text": "Welsh Phrase"
                 }
             },
             {
@@ -575,21 +575,21 @@ function openBannerRequestBlocks() {
                     {
                       "text": {
                         "type": "plain_text",
-                        "text": "*Manage Case (MC)*"
+                        "text": "Manage Case (MC)"
                       },
                       "value": "mc"
                     },
                     {
                       "text": {
                         "type": "plain_text",
-                        "text": "*Manage Org (MO)*"
+                        "text": "Manage Org (MO)"
                       },
                       "value": "mo"
                     },
                     {
                       "text": {
                         "type": "plain_text",
-                        "text": "*both*"
+                        "text": "both"
                       },
                       "value": "both"
                     }

@@ -236,6 +236,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
             roles: view.state.values.roles?.title?.value || "None",
             startdate: view.state.values.startDate.title.value,
             enddate: view.state.values.endDate.title.value,
+            priority: view.state.values.priority.priority.selected_option.text.text || "Medium",
         }
 
         const requestType = view.state.values.request_type.request_type.selected_option.value
