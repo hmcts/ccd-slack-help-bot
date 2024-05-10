@@ -267,7 +267,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
             channel: reportChannel,
             thread_ts: result.message.ts,
             text: 'New banner request raised',
-            blocks: helpRequestDetails(helpRequest)
+            blocks: helpRequestDetails(bannerRequest)
         });
         console.log(`Message posted to channel...`)
         const permaLink = (await client.chat.getPermalink({
@@ -276,7 +276,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
         })).permalink
 
         await updateHelpRequestDescription(jiraId, {
-            ...helpRequest,
+            ...bannerRequest,
             slackLink: permaLink
         })
       console.log(`Updated Description`)
