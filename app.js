@@ -142,8 +142,8 @@ app.shortcut('launch_banner_shortcut', async ({shortcut, body, ack, context, cli
     }
 });
 
-function extractLabels(values) {
-    const priority = `priority-${values.priority.priority.selected_option.value}`
+function extractLabels(values, request) {
+    const priority = `priority-${request.priority}`
     const team = `team-${values.team.team.selected_option.value}`
     return [priority, team];
 }
@@ -176,7 +176,7 @@ app.view('create_help_request', async ({ack, body, view, client}) => {
         console.log(`Jira created ${jiraId}`)
         await updateHelpRequestCommonFields(jiraId, {
             userEmail,
-            labels: extractLabels(view.state.values)
+            labels: extractLabels(view.state.values, helpRequest)
         }, requestType)
 
         const reportChannel = getReportChannel(requestType)
@@ -236,7 +236,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
             roles: view.state.values.roles?.title?.value || "None",
             startdate: view.state.values.startDate.title.value,
             enddate: view.state.values.endDate.title.value,
-            priority: view.state.values.priority.priority.selected_option.text.text || "Medium",
+            priority: "Medium",
         }
 
         const requestType = view.state.values.request_type.request_type.selected_option.value
@@ -244,7 +244,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
 
         const jiraId = await createHelpRequest(requestType, summary)
         console.log(`Jira created ${jiraId}`)
-        const labels = extractLabels(view.state.values)
+        const labels = extractLabels(view.state.values, bannerRequest)
         labels.push ("xui-banner-messages")
         await updateHelpRequestCommonFields(jiraId, {
             userEmail,
