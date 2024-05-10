@@ -226,6 +226,8 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
             user
         })).profile.email
 
+        console.log(view.state.values);
+
         const bannerRequest = {
             user,
             changeReference: view.state.values.changeReference.title.value,
