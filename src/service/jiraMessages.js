@@ -12,7 +12,6 @@ function mapFieldsToDescription(
         description,
         analysis,
         slackLink,
-        changeReference,
         englishPhrase,
         welshPhrase,
         xuiComponent,
@@ -27,8 +26,6 @@ h6. _This is an automatically generated ticket created from Slack, do not reply 
 ${optionalField('Jira/ServiceNow references', references)}
 
 ${optionalField('Environment', environment)}
-
-${optionalField('Change Reference', changeReference)}
 
 ${optionalField('English Phrase', englishPhrase)}
 

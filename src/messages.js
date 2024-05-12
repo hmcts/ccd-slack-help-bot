@@ -483,7 +483,7 @@ function openBannerRequestBlocks() {
     return {
         "title": {
             "type": "plain_text",
-            "text": "Support request"
+            "text": "Banner Message request"
         },
         "submit": {
             "type": "plain_text",
@@ -510,19 +510,19 @@ function openBannerRequestBlocks() {
             },
             {
                 "type": "input",
-                "block_id": "changeReference",
+                "block_id": "references",
                 "optional": true,
                 "element": {
                     "type": "plain_text_input",
                     "action_id": "title",
                     "placeholder": {
                         "type": "plain_text",
-                        "text": "Change Reference"
+                        "text": "Any relevant ticket references"
                     }
                 },
                 "label": {
                     "type": "plain_text",
-                    "text": "Change Reference"
+                    "text": "Jira/Change references"
                 }
             },
             {
