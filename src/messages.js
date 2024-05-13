@@ -155,6 +155,45 @@ function helpRequestDetails(
     ]
 }
 
+function bannerRequestDetails(
+    {
+        englishPhrase,
+        welshPhrase,
+        startdate,
+        enddate
+    }) {
+    return [
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": stringTrim(`:flag-england: english: ${englishPhrase}`, 3000),
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": stringTrim(`:flag-wales: welsh: ${welshPhrase}`, 3000),
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": stringTrim(`:calendar: start Date: ${startdate}`, 3000),
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": stringTrim(`:calendar: end Date: ${enddate}`, 3000),
+            }
+        },
+    ]
+}
+
 function unassignedOpenIssue({
                                  summary,
                                  slackLink,
@@ -732,6 +771,7 @@ module.exports.appHomeUnassignedIssues = appHomeUnassignedIssues;
 module.exports.unassignedOpenIssue = unassignedOpenIssue;
 module.exports.helpRequestRaised = helpRequestRaised;
 module.exports.helpRequestDetails = helpRequestDetails;
+module.exports.bannerRequestDetails = bannerRequestDetails;
 module.exports.openHelpRequestBlocks = openHelpRequestBlocks;
 module.exports.openBannerRequestBlocks = openBannerRequestBlocks;
 module.exports.extractSlackLinkFromText = extractSlackLinkFromText;

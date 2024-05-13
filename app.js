@@ -7,6 +7,7 @@ const {
 const {
     appHomeUnassignedIssues,
     extractSlackLinkFromText,
+    bannerRequestDetails,
     helpRequestDetails,
     helpRequestRaised,
     openHelpRequestBlocks,
@@ -273,7 +274,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
             channel: reportChannel,
             thread_ts: result.message.ts,
             text: 'New banner request raised',
-            blocks: helpRequestDetails(bannerRequest)
+            blocks: bannerRequestDetails(bannerRequest)
         });
         console.log(`Message posted to channel...`)
         const permaLink = (await client.chat.getPermalink({
