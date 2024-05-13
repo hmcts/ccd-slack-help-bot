@@ -228,21 +228,24 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
 
         console.log(view.state.values);
 
+        const requestType = view.state.values.request_type.request_type.selected_option.value
+        const summary = bannerRequest.startdate + " " + view.state.values.team.team.selected_option.value
+
         const bannerRequest = {
             user,
-            changeReference: view.state.values.changeReference.title.value,
+            references: view.state.values.references.title.value,
             englishPhrase: view.state.values.englishPhrase.title.value,
             welshPhrase: view.state.values.welshPhrase.title.value,
             xuiComponent: view.state.values.xuiComponent.component.selected_option.text.text,
             users: view.state.values.users?.title?.value || "None",
             roles: view.state.values.roles?.title?.value || "None",
-            startdate: view.state.values.startDate.title.selected_date,
-            enddate: view.state.values.endDate.title.selected_date,
+            startdate: view.state.values.startDate.title.selected_date.toLocaleDateString("en-GB"),
+            enddate: view.state.values.endDate.title.selected_date.toLocaleDateString("en-GB"),
             priority: "Medium",
+            summary: summary,
         }
 
-        const requestType = view.state.values.request_type.request_type.selected_option.value
-        const summary = bannerRequest.startdate + " " + view.state.values.team.team.selected_option.value
+       
 
         const jiraId = await createHelpRequest(requestType, summary)
         console.log(`Jira created ${jiraId}`)
