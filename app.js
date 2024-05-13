@@ -231,7 +231,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
 
         const requestType = view.state.values.request_type.request_type.selected_option.value
         const startDate = view.state.values.startDate.title.selected_date
-        const summary = startDate + " " + view.state.values.team.team.selected_option.value
+        const summary = " Banner Request - " + view.state.values.team.team.selected_option.value + " " + startDate
 
         const bannerRequest = {
             user,
