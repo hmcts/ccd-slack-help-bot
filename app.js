@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const config = require('@hmcts/properties-volume').addTo(require('config'))
 
 const { 
