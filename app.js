@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 const config = require('@hmcts/properties-volume').addTo(require('config'))
 
 const { 
@@ -231,7 +229,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
         console.log(view.state.values);
 
         const requestType = view.state.values.request_type.request_type.selected_option.value
-        const startDate = moment(view.state.values.startDate.title.selected_date).format('DD-MM-YYYY')
+        const startDate = view.state.values.startDate.title.selected_date
         const summary = startDate + " " + view.state.values.team.team.selected_option.value
 
         const bannerRequest = {
@@ -243,7 +241,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
             users: view.state.values.users?.title?.value || "None",
             roles: view.state.values.roles?.title?.value || "None",
             startdate: startDate,
-            enddate: moment(view.state.values.endDate.title.selected_date).format('DD-MM-YYYY'),
+            enddate: view.state.values.endDate.title.selected_date,
             priority: "Medium",
             summary: summary,
         }
