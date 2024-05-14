@@ -42,9 +42,9 @@ ${optionalField('Start Date', startdate)}
 ${optionalField('End Date', enddate)}
 
 *Issue description*
-${optionalField(description)}
+${description}
 
-*Analysis done so far*: ${optionalField(analysis)}
+*Analysis done so far*: ${analysis}
 `
 }
 
