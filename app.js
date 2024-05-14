@@ -245,6 +245,8 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
             enddate: view.state.values.endDate.title.selected_date,
             priority: "Medium",
             summary: summary,
+            analysis: "n/a",
+            description: "n/a",
         }
 
        
