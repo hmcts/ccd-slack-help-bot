@@ -167,28 +167,28 @@ function bannerRequestDetails(
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": stringTrim(`:flag-england: english: ${englishPhrase}`, 3000),
+                "text": stringTrim(`:flag-england: English: ${englishPhrase}`, 3000),
             }
         },
         {
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": stringTrim(`:flag-wales: welsh: ${welshPhrase}`, 3000),
+                "text": stringTrim(`:flag-wales: Welsh: ${welshPhrase}`, 3000),
             }
         },
         {
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": stringTrim(`:calendar: start Date: ${startdate}`, 3000),
-            }
+                "text": stringTrim(`:calendar: Start Date: ${startdate}`, 3000),
+            
         },
         {
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": stringTrim(`:calendar: end Date: ${enddate}`, 3000),
+                "text": stringTrim(`:calendar: End Date: ${enddate}`, 3000),
             }
         },
     ]
