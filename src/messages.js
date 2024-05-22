@@ -182,7 +182,7 @@ function bannerRequestDetails(
             "text": {
                 "type": "mrkdwn",
                 "text": stringTrim(`:calendar: Start Date: ${startdate}`, 3000),
-            
+            }    
         },
         {
             "type": "section",
