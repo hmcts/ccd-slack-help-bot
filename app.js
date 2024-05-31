@@ -242,13 +242,13 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
             welshPhrase: view.state.values.welshPhrase.title.value,
             xuiComponent: view.state.values.xuiComponent.component.selected_option.text.text,
             users: view.state.values.users?.title?.value || "None",
-            roles: view.state.values.roles?.title?.value || "None",
+            roles: view.state.values.roles?.title?.value || "All " + team + " roles",
             startdate: startDate,
             enddate: endDate,
             priority: "Medium",
             summary: summary,
             analysis: "n/a",
-            description: "n/a",
+            description: "if roles is for all service specific roles please refer to https://tools.hmcts.net/confluence/display/EXUI/IDAM+Role+List",
         }
 
        
