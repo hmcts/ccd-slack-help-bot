@@ -531,7 +531,7 @@ app.event('message', async ({event, context, client, say}) => {
                 limit: 200, // after a thread is 200 long we'll break but good enough for now
             })).messages
 
-            if (helpRequestMessages.length > 0 && helpRequestMessages[0].text === 'New support request raised') {
+            if (helpRequestMessages.length > 0 && (helpRequestMessages[0].text === 'New support request raised' || helpRequestMessages[0].text === 'New banner request raised')) {
                 const jiraId = extractJiraIdFromBlocks(helpRequestMessages[0].blocks)
 
                 const groupRegex = /<!subteam\^.+\|([^>.]+)>/g
