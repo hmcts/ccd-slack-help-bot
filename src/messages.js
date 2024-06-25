@@ -747,6 +747,7 @@ function openBannerRequestBlocks() {
                         option('Reform Software Engineering', 'reform-software-engineering'),
                         option('Security Operations or Secure design', 'security'),
                         option('SSCS'),
+                        option('Special Tribunals', 'sptribs'),
                         option('PayBubble'),
                         option('PET'),
                         option('Work Allocation', 'workallocation'),
