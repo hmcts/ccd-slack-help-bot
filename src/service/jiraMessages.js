@@ -48,7 +48,7 @@ ${description}
 
 *Analysis done so far*: ${analysis}
 
-*Reporter*: ${user} ${userEmail}
+*Reporter*: ${userEmail}
 `
 }
 
