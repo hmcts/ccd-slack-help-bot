@@ -7,6 +7,8 @@ function optionalField(prefix, value) {
 
 function mapFieldsToDescription(
     {
+        user,
+        userEmail,
         references,
         environment,
         description,
@@ -18,7 +20,7 @@ function mapFieldsToDescription(
         users,
         roles,
         startdate,
-        enddate
+        enddate,
     }) {
     return `
 h6. _This is an automatically generated ticket created from Slack, do not reply or update in here, [view in Slack|${slackLink}]_
@@ -45,6 +47,8 @@ ${optionalField('End Date', enddate)}
 ${description}
 
 *Analysis done so far*: ${analysis}
+
+*Reporter*: ${user} ${userEmail}
 `
 }
 

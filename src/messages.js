@@ -329,6 +329,7 @@ function openHelpRequestBlocks() {
                         option('CCD Support', 'ccd'),
                         option('CFTS Level 2 Support', 'cfts'),
                         option('HMC Support', 'hmc'),
+                        option('User Config Request', 'ucr'),
                     ],
                     "action_id": "request_type"
                 },
@@ -474,6 +475,7 @@ function openHelpRequestBlocks() {
                         option('CCD'),
                         option('Civil Damages', 'civildamages'),
                         option('Civil Unspecified', 'CivilUnspec'),
+                        option('Civil Enforcement', 'CivilEnforce'),
                         option('CMC'),
                         option('Divorce'),
                         option('Domestic Abuse', "domesticabuse"),

@@ -143,10 +143,17 @@ app.shortcut('launch_banner_shortcut', async ({shortcut, body, ack, context, cli
     }
 });
 
-function extractLabels(values, request) {
+function extractLabels(values, request, requestType) {
     const priority = `priority-${request.priority}`
     const team = `team-${values.team.team.selected_option.value}`
-    return [priority, team];
+    if(requestType='ucr'){
+        const config = `${values.team.team.selected_option.value}_Configuration`
+        return [priority, team, config];
+    }else {
+        return [priority, team];
+    }
+
+
 }
 
 app.view('create_help_request', async ({ack, body, view, client}) => {
@@ -163,6 +170,7 @@ app.view('create_help_request', async ({ack, body, view, client}) => {
 
         const helpRequest = {
             user,
+            userEmail,
             summary: view.state.values.summary.title.value,
             priority: view.state.values.priority.priority.selected_option.text.text,
             references: view.state.values.references?.title?.value || "None",
@@ -177,7 +185,7 @@ app.view('create_help_request', async ({ack, body, view, client}) => {
         console.log(`Jira created ${jiraId}`)
         await updateHelpRequestCommonFields(jiraId, {
             userEmail,
-            labels: extractLabels(view.state.values, helpRequest)
+            labels: extractLabels(view.state.values, helpRequest, requestType)
         }, requestType)
 
         const reportChannel = getReportChannel(requestType)
@@ -237,6 +245,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
 
         const bannerRequest = {
             user,
+            userEmail,
             references: view.state.values.references.title.value,
             englishPhrase: view.state.values.englishPhrase.title.value,
             welshPhrase: view.state.values.welshPhrase.title.value,
@@ -255,7 +264,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
 
         const jiraId = await createHelpRequest(requestType, summary)
         console.log(`Jira created ${jiraId}`)
-        const labels = extractLabels(view.state.values, bannerRequest)
+        const labels = extractLabels(view.state.values, bannerRequest, requestType)
         labels.push ("xui-banner-messages")
         await updateHelpRequestCommonFields(jiraId, {
             userEmail,

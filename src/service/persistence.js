@@ -134,20 +134,13 @@ async function createHelpRequest(requestType, summary) {
 
 async function updateHelpRequestCommonFields(issueId, { userEmail, labels }, requestType) {
     const user = convertEmail(userEmail)
+    await jira.updateIssue(issueId, buildFieldsForUpdate(labels, requestType))
     
-    try {
-        await jira.updateIssue(issueId, buildFieldsForUpdate(user, labels, requestType))
-    } catch(err) {
-        await jira.updateIssue(issueId, buildFieldsForUpdate(systemUser, labels, requestType))
-    }
 }
 
-function buildFieldsForUpdate(reporter, labels, requestType) {
+function buildFieldsForUpdate(labels, requestType) {
     return {
         fields: {
-            reporter: {
-                name: reporter // API docs say ID, but our jira version doesn't have that field yet, may need to change in future
-            },
             labels: ['created-from-slack', ...labels],
             fixVersions: [ { name: getFixedVersion(requestType) } ],
             components: [ { name: getComponents(requestType) } ]
