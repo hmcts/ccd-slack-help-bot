@@ -146,6 +146,7 @@ app.shortcut('launch_banner_shortcut', async ({shortcut, body, ack, context, cli
 function extractLabels(values, request, requestType) {
     const priority = `priority-${request.priority}`
     const team = `team-${values.team.team.selected_option.value}`
+    console.log(`request type is ${requestType}`);
     if(requestType='ucr'){
         const config = `${values.team.team.selected_option.value}_Configuration`
         return [priority, team, config];
