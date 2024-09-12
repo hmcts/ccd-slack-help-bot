@@ -14,6 +14,9 @@ slack:
   ucr:
     report_channel: UCR_SLACK_REPORT_CHANNEL
     report_channel_id: UCR_SLACK_REPORT_CHANNEL_ID
+  dir:
+    report_channel: DIR_SLACK_REPORT_CHANNEL
+    report_channel_id: DIR_SLACK_REPORT_CHANNEL_ID
 jira:
   ccd:
     start_transition_id: CCD_JIRA_START_TRANSITION_ID
@@ -45,6 +48,12 @@ jira:
     project: UCR_JIRA_PROJECT
     issue_type_id: UCR_JIRA_ISSUE_TYPE_ID
     issue_type_name: UCR_JIRA_ISSUE_TYPE_NAME
+  dir:
+    start_transition_id: DIR_JIRA_START_TRANSITION_ID
+    done_transition_id: DIR_JIRA_DONE_TRANSITION_ID
+    project: DIR_JIRA_PROJECT
+    issue_type_id: DIR_JIRA_ISSUE_TYPE_ID
+    issue_type_name: DIR_JIRA_ISSUE_TYPE_NAME
 
 secrets:
   cftptl-intsvc:

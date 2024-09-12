@@ -330,6 +330,7 @@ function openHelpRequestBlocks() {
                         option('CFTS Level 2 Support', 'cfts'),
                         option('HMC Support', 'hmc'),
                         option('User Config Request', 'ucr'),
+                        option('Definition Import Request', 'dir'),
                     ],
                     "action_id": "request_type"
                 },

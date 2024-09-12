@@ -147,7 +147,7 @@ function extractLabels(values, request, requestType) {
     const priority = `priority-${request.priority}`
     const team = `team-${values.team.team.selected_option.value}`
     console.log(`request type is ${requestType}`);
-    if(requestType =='ucr'){
+    if(requestType =='ucr' || requestType =='dir' ){
         const config = `${values.team.team.selected_option.value}_Configuration`
         return [priority, team, config];
     }else {

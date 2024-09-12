@@ -46,6 +46,17 @@ const supportConfig = {
         fixedVersion: "CCD No Release Required",
         components: "CDM Configuration"
     },
+    dir: {
+        reportChannel: config.get('slack.dir.report_channel'),
+        reportChannelId: config.get('slack.dir.report_channel_id'),
+        jiraProject: config.get('jira.dir.project'),
+        issueTypeId: config.get('jira.dir.issue_type_id'),
+        issueTypeName: config.get('jira.dir.issue_type_name'),
+        jiraStartTransitionId: config.get('jira.dir.start_transition_id'),
+        jiraDoneTransitionId: config.get('jira.dir.done_transition_id'),
+        fixedVersion: "CCD No Release Required",
+        components: "CDM Configuration"
+    },
     xui: {
         reportChannel: config.get('slack.xui.report_channel'),
         reportChannelId: config.get('slack.xui.report_channel_id'),

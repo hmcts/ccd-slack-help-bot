@@ -17,6 +17,9 @@ slack:
   ucr:
     report_channel: bot-test
     report_channel_id: C01KHKNJUKE
+  dir:
+    report_channel: bot-test
+    report_channel_id: C01KHKNJUKE
 
 jira:
   #username: no default
@@ -46,6 +49,12 @@ jira:
     issue_type_id: Bug
     issue_type_name: 10900
   ucr:
+    start_transition_id: 21
+    done_transition_id: 41
+    project: SBOX
+    issue_type_id: Bug
+    issue_type_name: 10900
+  dir:
     start_transition_id: 21
     done_transition_id: 41
     project: SBOX
