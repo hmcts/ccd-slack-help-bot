@@ -162,37 +162,78 @@ function bannerRequestDetails(
         startdate,
         enddate
     }) {
-    return [
-        {
-            "type": "section",
-            "text": {
-                "type": "mrkdwn",
-                "text": stringTrim(`:flag-england: English: ${englishPhrase}`, 3000),
-            }
-        },
-        {
-            "type": "section",
-            "text": {
-                "type": "mrkdwn",
-                "text": stringTrim(`:flag-wales: Welsh: ${welshPhrase}`, 3000),
-            }
-        },
-        {
-            "type": "section",
-            "text": {
-                "type": "mrkdwn",
-                "text": stringTrim(`:calendar: Start Date: ${startdate}`, 3000),
-            }    
-        },
-        {
-            "type": "section",
-            "text": {
-                "type": "mrkdwn",
-                "text": stringTrim(`:calendar: End Date: ${enddate}`, 3000),
-            }
-        },
-    ]
-}
+    var diffDays = enddate.getDate() - startdate.getDate(); 
+    if (diffDays >= 14) {
+        return [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": stringTrim(`:flag-england: English: ${englishPhrase}`, 3000),
+                }
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": stringTrim(`:flag-wales: Welsh: ${welshPhrase}`, 3000),
+                }
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": stringTrim(`:calendar: Start Date: ${startdate}`, 3000),
+                }    
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": stringTrim(`:calendar: End Date: ${enddate}`, 3000),
+                }
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": stringTrim(`:memo: @Rebecca Baker please review this banner message as it's greater than 2 weeks in length`, 3000),
+                }
+            },
+        ]
+      } else {
+        return [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": stringTrim(`:flag-england: English: ${englishPhrase}`, 3000),
+                }
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": stringTrim(`:flag-wales: Welsh: ${welshPhrase}`, 3000),
+                }
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": stringTrim(`:calendar: Start Date: ${startdate}`, 3000),
+                }    
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": stringTrim(`:calendar: End Date: ${enddate}`, 3000),
+                }
+            },
+        ]
+      }
+    }
 
 function unassignedOpenIssue({
                                  summary,
