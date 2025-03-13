@@ -642,7 +642,7 @@ function openBannerRequestBlocks() {
             {
                 "type": "input",
                 "block_id": "users",
-                "optional": true,
+                "optional": false,
                 "element": {
                     "type": "plain_text_input",
                     "action_id": "title",
@@ -658,7 +658,7 @@ function openBannerRequestBlocks() {
             },{
                 "type": "input",
                 "block_id": "roles",
-                "optional": true,
+                "optional": false,
                 "element": {
                     "type": "plain_text_input",
                     "action_id": "title",
