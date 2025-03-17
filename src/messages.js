@@ -162,8 +162,9 @@ function bannerRequestDetails(
         startdate,
         enddate
     }) {
-    var diffDays = enddate - startdate; 
-    if (diffDays >= 14) {
+    const diffInMs   = new Date(enddate) - new Date(startdate);
+    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+    if (diffInDays >= 14) {
         return [
             {
                 "type": "section",
