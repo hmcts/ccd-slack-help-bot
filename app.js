@@ -243,7 +243,8 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
         const endDate = view.state.values.endDate.title.selected_date
         const team = view.state.values.team.team.selected_option.value
         const summary = "Banner Request - " + team + " " + startDate + " -> " + endDate
-
+        var diffDays = enddate - startdate; 
+        console.log(`banner length ${diffDays}`)
         const bannerRequest = {
             user,
             userEmail,
