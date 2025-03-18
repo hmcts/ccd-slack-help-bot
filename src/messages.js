@@ -198,7 +198,7 @@ function bannerRequestDetails(
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": stringTrim(`:memo: @Rebecca Baker please review this banner message as it's greater than 2 weeks in length`, 3000),
+                    "text": stringTrim(`:memo: <@S08JJRRP1A5> please review this banner message as it's greater than 2 weeks in length`, 3000),
                 }
             },
         ]
