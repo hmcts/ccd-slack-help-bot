@@ -246,6 +246,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
         const diffInMs   = new Date(endDate) - new Date(startDate);
         const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
         console.log(`banner length ${diffInDays}`)
+        console.log(`user is ${user}`)
         const bannerRequest = {
             user,
             userEmail,
