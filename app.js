@@ -247,6 +247,11 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
         const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
         console.log(`banner length ${diffInDays}`)
         console.log(`user is ${user}`)
+
+        const analysis = "n/a"
+         if (diffInDays >= 14) {
+             const analysis = "**banner is longer than 2 weeks, wait for approval before proceeding**"
+         }
         const bannerRequest = {
             user,
             userEmail,
@@ -260,7 +265,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
             enddate: endDate,
             priority: "Medium",
             summary: summary,
-            analysis: "n/a",
+            analysis: analysis,
             description: "if roles is for all service specific roles please refer to https://tools.hmcts.net/confluence/display/EXUI/IDAM+Role+List",
         }
 
