@@ -250,7 +250,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
 
         const analysis = "n/a"
          if (diffInDays >= 14) {
-             const analysis = "**banner is longer than 2 weeks, wait for approval before proceeding**"
+            analysis = "**banner is longer than 2 weeks, please wait for approval before proceeding**"
          }
         const bannerRequest = {
             user,
