@@ -248,7 +248,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
         console.log(`banner length ${diffInDays}`)
         console.log(`user is ${user}`)
 
-        const analysis = "n/a"
+        var analysis = "n/a"
          if (diffInDays >= 14) {
             analysis = "**banner is longer than 2 weeks, please wait for approval before proceeding**"
          }
