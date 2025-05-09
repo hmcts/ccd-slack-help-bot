@@ -363,6 +363,13 @@ function openHelpRequestBlocks() {
             "text": "Submit"
         },
         "blocks": [
+             {
+			    "type": "section",
+			    "text": {
+				    "type": "mrkdwn",
+				    "text": "Please refer to the following confluence pages for the minimum data set required to process a support request \n - CCD https://tools.hmcts.net/confluence/display/CCD/How+to+create+a+Support+Request+via+Slackbot+and+minimum+data+set \n - HMC https://tools.hmcts.net/confluence/display/HMAN/How+to+create+a+Support+Request+via+Slackbot+and+minimum+data+set \n - User Config Request https://tools.hmcts.net/confluence/pages/viewpage.action?pageId=375685806#ProductionUserManagement-RaisingrequestsintheformofJIRATickets \n - Definition Import Request https://tools.hmcts.net/confluence/display/RCCD/Production%3A+Case+Configuration \n If any of the information is not provided the team will pause the request and ask for the ticket to be updated"
+			    }
+		    },
             {
                 "type": "input",
                 "block_id": "request_type",
