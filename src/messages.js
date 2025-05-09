@@ -643,7 +643,7 @@ function openBannerRequestBlocks() {
             },
             {
                 "type": "actions",
-                "block_id": "actionblock789",
+                "block_id": "actionblock790",
                 "elements": [
                     {
                         "type": "button",
@@ -651,7 +651,7 @@ function openBannerRequestBlocks() {
                             "type": "plain_text",
                             "text": "Banner Request Guidance"
                         },
-                        "url": "https://tools.hmcts.net/confluence/display/EXUI/How+to+request+a+service+message+banner+on+Slack for further guidance"
+                        "url": "https://tools.hmcts.net/confluence/display/EXUI/How+to+request+a+service+message+banner+on+Slack"
                     }
                 ]
             },
