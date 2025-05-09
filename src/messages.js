@@ -363,13 +363,100 @@ function openHelpRequestBlocks() {
             "text": "Submit"
         },
         "blocks": [
-             {
+            {
+			    "type": "divider"
+		    },
+		    {
+			    "type": "section",
+			    "text": {
+				    "type": "plain_text",
+				    "text": "Please refer to the following confluence pages for the minimum data set required to process a support request",
+				    "emoji": true
+			    }
+		    },
+		    {
 			    "type": "section",
 			    "text": {
 				    "type": "mrkdwn",
-				    "text": "Please refer to the following confluence pages for the minimum data set required to process a support request \n - CCD https://tools.hmcts.net/confluence/display/CCD/How+to+create+a+Support+Request+via+Slackbot+and+minimum+data+set \n - HMC https://tools.hmcts.net/confluence/display/HMAN/How+to+create+a+Support+Request+via+Slackbot+and+minimum+data+set \n - User Config Request https://tools.hmcts.net/confluence/pages/viewpage.action?pageId=375685806#ProductionUserManagement-RaisingrequestsintheformofJIRATickets \n - Definition Import Request https://tools.hmcts.net/confluence/display/RCCD/Production%3A+Case+Configuration \n If any of the information is not provided the team will pause the request and ask for the ticket to be updated"
-			    }
-		    },
+				    "text": "CCD"
+			    },
+                "accessory": {
+                    "type": "button",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Click Me",
+                        "emoji": true
+                    },
+                    "value": "click_me_123",
+                    "url": "https://tools.hmcts.net/confluence/display/CCD/How+to+create+a+Support+Request+via+Slackbot+and+minimum+data+set",
+                    "action_id": "button-action"
+                }
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "HMC"
+                },
+                "accessory": {
+                    "type": "button",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Click Me",
+                        "emoji": true
+                    },
+                    "value": "click_me_123",
+                    "url": "https://tools.hmcts.net/confluence/display/HMAN/How+to+create+a+Support+Request+via+Slackbot+and+minimum+data+set",
+                    "action_id": "button-action"
+                }
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "User Config Request"
+                },
+                "accessory": {
+                    "type": "button",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Click Me",
+                        "emoji": true
+                    },
+                    "value": "click_me_123",
+                    "url": "https://tools.hmcts.net/confluence/pages/viewpage.action?pageId=375685806#ProductionUserManagement-RaisingrequestsintheformofJIRATickets",
+                    "action_id": "button-action"
+                }
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "Definition Import Request"
+                },
+                "accessory": {
+                    "type": "button",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Click Me",
+                        "emoji": true
+                    },
+                    "value": "click_me_123",
+                    "url": "https://tools.hmcts.net/confluence/display/RCCD/Production%3A+Case+Configuration",
+                    "action_id": "button-action"
+                }
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "plain_text",
+                    "text": "If any of the information is not provided the team will pause the request and ask for the ticket to be updated",
+                    "emoji": true
+                }
+            },
+            {
+                "type": "divider"
+            },
             {
                 "type": "input",
                 "block_id": "request_type",
