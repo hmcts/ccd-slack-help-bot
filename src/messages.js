@@ -364,87 +364,50 @@ function openHelpRequestBlocks() {
         },
         "blocks": [
             {
-			    "type": "divider"
-		    },
-		    {
-			    "type": "section",
-			    "text": {
-				    "type": "plain_text",
-				    "text": "Please refer to the following confluence pages for the minimum data set required to process a support request",
-				    "emoji": true
-			    }
-		    },
-		    {
-			    "type": "section",
-			    "text": {
-				    "type": "mrkdwn",
-				    "text": "CCD"
-			    },
-                "accessory": {
-                    "type": "button",
-                    "text": {
-                        "type": "plain_text",
-                        "text": "Click Me",
-                        "emoji": true
-                    },
-                    "value": "click_me_123",
-                    "url": "https://tools.hmcts.net/confluence/display/CCD/How+to+create+a+Support+Request+via+Slackbot+and+minimum+data+set",
-                    "action_id": "button-action"
+                "type": "section",
+                "text": {
+                    "type": "plain_text",
+                    "text": "Please refer to the following confluence pages for the minimum data set required to process a support request",
+                    "emoji": true
                 }
             },
             {
-                "type": "section",
-                "text": {
-                    "type": "mrkdwn",
-                    "text": "HMC"
-                },
-                "accessory": {
-                    "type": "button",
-                    "text": {
-                        "type": "plain_text",
-                        "text": "Click Me",
-                        "emoji": true
+                "type": "actions",
+                "block_id": "actionblock789",
+                "elements": [
+                    {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "CCD Minimum Data set"
+                        },
+                        "url": "https://tools.hmcts.net/confluence/display/CCD/How+to+create+a+Support+Request+via+Slackbot+and+minimum+data+set"
                     },
-                    "value": "click_me_123",
-                    "url": "https://tools.hmcts.net/confluence/display/HMAN/How+to+create+a+Support+Request+via+Slackbot+and+minimum+data+set",
-                    "action_id": "button-action"
-                }
-            },
-            {
-                "type": "section",
-                "text": {
-                    "type": "mrkdwn",
-                    "text": "User Config Request"
-                },
-                "accessory": {
-                    "type": "button",
-                    "text": {
-                        "type": "plain_text",
-                        "text": "Click Me",
-                        "emoji": true
+                    {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "HMC Minimum Data Set"
+                        },
+                        "url": "https://tools.hmcts.net/confluence/display/HMAN/How+to+create+a+Support+Request+via+Slackbot+and+minimum+data+set"
                     },
-                    "value": "click_me_123",
-                    "url": "https://tools.hmcts.net/confluence/pages/viewpage.action?pageId=375685806#ProductionUserManagement-RaisingrequestsintheformofJIRATickets",
-                    "action_id": "button-action"
-                }
-            },
-            {
-                "type": "section",
-                "text": {
-                    "type": "mrkdwn",
-                    "text": "Definition Import Request"
-                },
-                "accessory": {
-                    "type": "button",
-                    "text": {
-                        "type": "plain_text",
-                        "text": "Click Me",
-                        "emoji": true
+                    {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "User Config Request"
+                        },
+                        "url": "https://tools.hmcts.net/confluence/pages/viewpage.action?pageId=375685806#ProductionUserManagement-RaisingrequestsintheformofJIRATickets"
                     },
-                    "value": "click_me_123",
-                    "url": "https://tools.hmcts.net/confluence/display/RCCD/Production%3A+Case+Configuration",
-                    "action_id": "button-action"
-                }
+                    {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "Definition Import Request"
+                        },
+                        "url": "https://tools.hmcts.net/confluence/display/RCCD/Production:+Case+Configuration"
+                    }
+                ]
             },
             {
                 "type": "section",
