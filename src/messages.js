@@ -577,6 +577,13 @@ function openBannerRequestBlocks() {
         },
         "blocks": [
             {
+			    "type": "section",
+			    "text": {
+				    "type": "mrkdwn",
+				    "text": "Please note your message should comply with the following: \n - Begins with which service the message is applicable for \n - Includes all relevant information in clear and concise language, no acronyms and appropriate grammar \n If any of the information is not provided the team will pause the request and ask for the ticket to be updated. Please refer to https://tools.hmcts.net/confluence/display/EXUI/How+to+request+a+service+message+banner+on+Slack for further guidance"
+			    }
+		    },
+            {
                 "type": "input",
                 "block_id": "request_type",
                 "element": {
@@ -682,6 +689,13 @@ function openBannerRequestBlocks() {
                   ]
                 }
               },
+            {
+			    "type": "section",
+			    "text": {
+				    "type": "mrkdwn",
+				    "text": "Please refer to the following roles list to specify which roles the message should apply too https://tools.hmcts.net/confluence/display/EXUI/IDAM+Role+List"
+			    }
+		    },
             {
                 "type": "input",
                 "block_id": "users",
