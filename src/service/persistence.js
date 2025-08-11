@@ -14,7 +14,8 @@ const {
     getJiraStartTransitionId,
     getJiraDoneTransitionId,
     getComponents,
-    getFixedVersion
+    getFixedVersion,
+    getEpicName
 } = require('../supportConfig');
 
 const jira = new JiraApi({
@@ -118,6 +119,7 @@ async function createHelpRequestInJira(requestType, summary, project) {
             },
             description: undefined,
             customfield_24700: [ { value: "No Environment" } ], // Environment - TODO Make this configurable and select appropriate value based on selection
+            customfield_10008: getEpicName(requestType)
         }
     });
 }

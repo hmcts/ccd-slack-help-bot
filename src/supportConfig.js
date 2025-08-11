@@ -5,6 +5,7 @@ const supportConfig = {
     ccd: {
         reportChannel: config.get('slack.ccd.report_channel'),
         reportChannelId: config.get('slack.ccd.report_channel_id'),
+        epicName: config.get('jira.ccd.epic_name'),
         jiraProject: config.get('jira.ccd.project'),
         issueTypeId: config.get('jira.ccd.issue_type_id'),
         issueTypeName: config.get('jira.ccd.issue_type_name'),
@@ -16,6 +17,7 @@ const supportConfig = {
     cfts: {
         reportChannel: config.get('slack.cfts.report_channel'),
         reportChannelId: config.get('slack.cfts.report_channel_id'),
+        epicName: config.get('jira.cfts.epic_name'),
         jiraProject: config.get('jira.cfts.project'),
         issueTypeId: config.get('jira.cfts.issue_type_id'),
         issueTypeName: config.get('jira.cfts.issue_type_name'),
@@ -27,6 +29,7 @@ const supportConfig = {
     hmc: {
         reportChannel: config.get('slack.hmc.report_channel'),
         reportChannelId: config.get('slack.hmc.report_channel_id'),
+        epicName: config.get('jira.hmc.epic_name'),
         jiraProject: config.get('jira.hmc.project'),
         issueTypeId: config.get('jira.hmc.issue_type_id'),
         issueTypeName: config.get('jira.hmc.issue_type_name'),
@@ -38,6 +41,7 @@ const supportConfig = {
     ucr: {
         reportChannel: config.get('slack.ucr.report_channel'),
         reportChannelId: config.get('slack.ucr.report_channel_id'),
+        epicName: config.get('jira.ucr.epic_name'),
         jiraProject: config.get('jira.ucr.project'),
         issueTypeId: config.get('jira.ucr.issue_type_id'),
         issueTypeName: config.get('jira.ucr.issue_type_name'),
@@ -49,6 +53,7 @@ const supportConfig = {
     dir: {
         reportChannel: config.get('slack.dir.report_channel'),
         reportChannelId: config.get('slack.dir.report_channel_id'),
+        epicName: config.get('jira.dir.epic_name'),
         jiraProject: config.get('jira.dir.project'),
         issueTypeId: config.get('jira.dir.issue_type_id'),
         issueTypeName: config.get('jira.dir.issue_type_name'),
@@ -60,6 +65,7 @@ const supportConfig = {
     xui: {
         reportChannel: config.get('slack.xui.report_channel'),
         reportChannelId: config.get('slack.xui.report_channel_id'),
+        epicName: config.get('jira.xui.epic_name'),
         jiraProject: config.get('jira.xui.project'),
         issueTypeId: config.get('jira.xui.issue_type_id'),
         issueTypeName: config.get('jira.xui.issue_type_name'),
@@ -82,6 +88,10 @@ function getJiraProject(requestType) {
 
 function getIssueTypeId(requestType) {
     return supportConfig[requestType].issueTypeId
+}
+
+function getEpicName(requestType) {
+    return supportConfig[requestType].epicName
 }
 
 function getJiraStartTransitionId(requestType) {
@@ -137,6 +147,7 @@ module.exports.getJiraProjects = getJiraProjects
 module.exports.getJiraProject = getJiraProject
 module.exports.getIssueTypeNames = getIssueTypeNames
 module.exports.getIssueTypeId = getIssueTypeId
+module.exports.getEpicName = getEpicName
 module.exports.getJiraStartTransitionId = getJiraStartTransitionId
 module.exports.getJiraDoneTransitionId = getJiraDoneTransitionId
 module.exports.getComponents = getComponents

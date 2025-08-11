@@ -22,36 +22,42 @@ jira:
     start_transition_id: CCD_JIRA_START_TRANSITION_ID
     done_transition_id: CCD_JIRA_DONE_TRANSITION_ID
     project: CCD_JIRA_PROJECT
+    epic_name: CCD_JIRA_EPIC_NAME
     issue_type_id: CCD_JIRA_ISSUE_TYPE_ID
     issue_type_name: CCD_JIRA_ISSUE_TYPE_NAME
   cfts:
     start_transition_id: CFTS_JIRA_START_TRANSITION_ID
     done_transition_id: CFTS_JIRA_DONE_TRANSITION_ID
     project: CFTS_JIRA_PROJECT
+    epic_name: CFTS_JIRA_EPIC_NAME
     issue_type_id: CFTS_JIRA_ISSUE_TYPE_ID
     issue_type_name: CFTS_JIRA_ISSUE_TYPE_NAME
   hmc:
     start_transition_id: HMC_JIRA_START_TRANSITION_ID
     done_transition_id: HMC_JIRA_DONE_TRANSITION_ID
     project: HMC_JIRA_PROJECT
+    epic_name: HMC_JIRA_EPIC_NAME
     issue_type_id: HMC_JIRA_ISSUE_TYPE_ID
     issue_type_name: HMC_JIRA_ISSUE_TYPE_NAME
   xui:
     start_transition_id: XUI_JIRA_START_TRANSITION_ID
     done_transition_id: XUI_JIRA_DONE_TRANSITION_ID
     project: XUI_JIRA_PROJECT
+    epic_name: XUI_JIRA_EPIC_NAME
     issue_type_id: XUI_JIRA_ISSUE_TYPE_ID
     issue_type_name: XUI_JIRA_ISSUE_TYPE_NAME
   ucr:
     start_transition_id: UCR_JIRA_START_TRANSITION_ID
     done_transition_id: UCR_JIRA_DONE_TRANSITION_ID
     project: UCR_JIRA_PROJECT
+    epic_name: UCR_JIRA_EPIC_NAME
     issue_type_id: UCR_JIRA_ISSUE_TYPE_ID
     issue_type_name: UCR_JIRA_ISSUE_TYPE_NAME
   dir:
     start_transition_id: DIR_JIRA_START_TRANSITION_ID
     done_transition_id: DIR_JIRA_DONE_TRANSITION_ID
     project: DIR_JIRA_PROJECT
+    epic_name: DIR_JIRA_EPIC_NAME
     issue_type_id: DIR_JIRA_ISSUE_TYPE_ID
     issue_type_name: DIR_JIRA_ISSUE_TYPE_NAME
 
