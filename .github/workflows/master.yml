@@ -70,7 +70,7 @@ jobs:
           docker push ${{ env.NEW_AZURE_CONTAINER_REGISTRY_URL }}/ccd/slack-help-bot:pr-${{github.event.number}}-${{ steps.get-short-sha.outputs.shortSha }}
 
       - name: "Build and push prod image - hmctsprod"
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/master'
         run: |
           docker build . -t ${{ env.NEW_AZURE_CONTAINER_REGISTRY_URL }}/ccd/slack-help-bot:prod-${{ steps.get-short-sha.outputs.shortSha }}-${{ steps.get-timestamp.outputs.timestamp }}
           docker push ${{ env.NEW_AZURE_CONTAINER_REGISTRY_URL }}/ccd/slack-help-bot:prod-${{ steps.get-short-sha.outputs.shortSha }}-${{ steps.get-timestamp.outputs.timestamp }}
@@ -92,7 +92,7 @@ jobs:
           docker push ${{ env.AZURE_CONTAINER_REGISTRY_URL }}/ccd/slack-help-bot:pr-${{github.event.number}}-${{ steps.get-short-sha.outputs.shortSha }}
 
       - name: "Build and push prod image - hmctspublic"
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/master'
         run: |
           docker build . -t ${{ env.AZURE_CONTAINER_REGISTRY_URL }}/ccd/slack-help-bot:prod-${{ steps.get-short-sha.outputs.shortSha }}-${{ steps.get-timestamp.outputs.timestamp }}
           docker push ${{ env.AZURE_CONTAINER_REGISTRY_URL }}/ccd/slack-help-bot:prod-${{ steps.get-short-sha.outputs.shortSha }}-${{ steps.get-timestamp.outputs.timestamp }}
