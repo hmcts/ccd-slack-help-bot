@@ -578,7 +578,7 @@ function openHelpRequestBlocks() {
                         option('Civil Unspecified', 'CivilUnspec'),
                         option('Civil Enforcement', 'CivilEnforce'),
 						option('CMC'),
-						option('Common Components', 'CommonComponents'),
+						option('Common Components', 'cc'),
                         option('Divorce'),
                         option('Domestic Abuse', "domesticabuse"),
                         option('No fault divorce', 'nfdivorce'),
