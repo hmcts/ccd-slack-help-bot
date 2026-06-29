@@ -17,7 +17,7 @@ jobs:
       AZURE_CONTAINER_REGISTRY_URL: hmctsprod.azurecr.io
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [24.x]
 
     steps:
       - uses: actions/checkout@v3
