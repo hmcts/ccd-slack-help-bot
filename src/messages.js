@@ -1,7 +1,8 @@
 const { convertIso8601ToEpochSeconds } = require('./dateHelper');
 
 function convertJiraKeyToUrl(jiraId) {
-    return `https://tools.hmcts.net/jira/browse/${jiraId}`;
+    const browseUrl = config.get("jira.browse-url");
+    return `${browseUrl.replace(/\/+$/, "")}/browse/${jiraId}`;
 }
 
 const slackLinkRegex = /view in Slack\|(https:\/\/.+slack\.com.+)]/
