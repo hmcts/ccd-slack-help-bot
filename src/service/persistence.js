@@ -147,8 +147,8 @@ async function createHelpRequestInJira(requestType, summary, project) {
                 id: project.id
             },
             description: undefined,
-            customfield_24700: [ { value: "No Environment" } ], // Environment - TODO Make this configurable and select appropriate value based on selection
-            customfield_10008: getEpicName(requestType)
+            environment: [ { value: "No Environment" } ], // Environment - TODO Make this configurable and select appropriate value based on selection
+            parent: getEpicName(requestType)
         }
     });
 }
