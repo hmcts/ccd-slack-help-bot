@@ -1,3 +1,4 @@
+const config = require('config');
 const { convertIso8601ToEpochSeconds } = require('./dateHelper');
 
 function convertJiraKeyToUrl(jiraId) {
