@@ -2,7 +2,9 @@ const JiraApi = require('jira-client');
 const config = require('config')
 const {createComment, mapFieldsToDescription} = require("./jiraMessages");
 
-const systemUser = config.get('secrets.cftptl-intsvc.jira-username')
+//const systemUser = config.get('secrets.cftptl-intsvc.jira-username')
+let systemAccountId;
+let systemAccountIdPromise;
 
 const { 
     extractProjectRegex,
@@ -18,13 +20,40 @@ const {
     getEpicName
 } = require('../supportConfig');
 
+const jiraApiUrl = new URL(config.get("jira.api-url"));
+if (config.has("secrets.cftptl-intsvc.jira-cloud-id")) {
+  jiraApiUrl.pathname = `${jiraApiUrl.pathname.replace(/\/+$/, "")}/${config.get(
+    "jira.cloud-id",
+  )}`;
+}
+
 const jira = new JiraApi({
-    protocol: 'https',
-    host: 'tools.hmcts.net/jira',
-    bearer: config.get('secrets.cftptl-intsvc.jira-api-token'),
-    apiVersion: '2',
-    strictSSL: true
-});
+   protocol: jiraApiUrl.protocol.replace(":", ""),
+    host: jiraApiUrl.hostname,
+    port: jiraApiUrl.port,
+    base: jiraApiUrl.pathname.replace(/\/+$/, ""),
+    username: config.get('secrets.cftptl-intsvc.jira-username'),
+    password: config.get('secrets.cftptl-intsvc.jira-api-token'),
+   apiVersion: "2",
+   strictSSL: true,
+ });
+
+async function getSystemAccountId() {
+  if (systemAccountId) return systemAccountId;
+  if (!systemAccountIdPromise) {
+    systemAccountIdPromise = jira
+      .getCurrentUser()
+      .then((user) => {
+        systemAccountId = user?.accountId;
+        return systemAccountId;
+      })
+      .catch((err) => {
+        console.log("Unable to resolve Jira service account ID", err);
+        return undefined;
+      });
+  }
+  return systemAccountIdPromise;
+}
 
 async function resolveHelpRequest(jiraId) {
     try {
@@ -86,7 +115,7 @@ async function assignHelpRequest(issueId, email) {
 /**
  * Extracts a jira ID
  *
- * expected format: 'View on Jira: <https://tools.hmcts.net/jira/browse/SBOX-61|SBOX-61>'
+ * expected format: 'View on Jira: <https://hmcts.atlassian.net/jira/browse/SBOX-61|SBOX-61>'
  * @param blocks
  */
 function extractJiraIdFromBlocks(blocks) {
@@ -101,7 +130,7 @@ function extractJiraId(text) {
 
 function convertEmail(email) {
     if (!email) {
-        return systemUser
+        return getSystemAccountId();
     }
 
     return email.split('@')[0]

@@ -18,6 +18,8 @@ slack:
     report_channel: DIR_SLACK_REPORT_CHANNEL
     report_channel_id: DIR_SLACK_REPORT_CHANNEL_ID
 jira:
+  api-url: JIRA_API_URL
+  browse-url: JIRA_BROWSE_URL
   ccd:
     start_transition_id: CCD_JIRA_START_TRANSITION_ID
     done_transition_id: CCD_JIRA_DONE_TRANSITION_ID
@@ -65,5 +67,6 @@ secrets:
   cftptl-intsvc:
     jira-username: JIRA_USERNAME
     jira-api-token: JIRA_API_TOKEN
+    jira-cloud-id: JIRA_CLOUD_ID
     ccd-slack-bot-token: SLACK_BOT_TOKEN
     ccd-slack-app-token: SLACK_APP_TOKEN

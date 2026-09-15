@@ -22,6 +22,9 @@ slack:
     report_channel_id: C01KHKNJUKE
 
 jira:
+  api-url: "https://api.atlassian.com/ex/jira/"
+  browse-url: "https://hmcts.atlassian.net"
+  #cloud_id: no default
   #username: no default
   #api_token: no default
   ccd:

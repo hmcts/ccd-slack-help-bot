@@ -266,7 +266,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
             priority: "Medium",
             summary: summary,
             analysis: analysis,
-            description: "if roles is for all service specific roles please refer to https://tools.hmcts.net/confluence/display/EXUI/IDAM+Role+List",
+            description: "if roles is for all service specific roles please refer to https://hmcts.atlassian.net/wiki/spaces/EXUI/pages/276989105/IDAM+Role+List",
         }
 
        

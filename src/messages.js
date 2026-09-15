@@ -1,7 +1,8 @@
 const { convertIso8601ToEpochSeconds } = require('./dateHelper');
 
 function convertJiraKeyToUrl(jiraId) {
-    return `https://tools.hmcts.net/jira/browse/${jiraId}`;
+    const browseUrl = config.get("jira.browse-url");
+    return `${browseUrl.replace(/\/+$/, "")}/browse/${jiraId}`;
 }
 
 const slackLinkRegex = /view in Slack\|(https:\/\/.+slack\.com.+)]/
@@ -381,7 +382,7 @@ function openHelpRequestBlocks() {
                             "type": "plain_text",
                             "text": "CCD Minimum Data set"
                         },
-                        "url": "https://tools.hmcts.net/confluence/display/CCD/How+to+create+a+Support+Request+via+Slackbot+and+minimum+data+set"
+                        "url": "https://hmcts.atlassian.net/wiki/spaces/CCD/pages/280714013/How+to+create+a+Support+Request+via+Slackbot+and+minimum+data+set"
                     },
                     {
                         "type": "button",
@@ -389,7 +390,7 @@ function openHelpRequestBlocks() {
                             "type": "plain_text",
                             "text": "HMC Minimum Data Set"
                         },
-                        "url": "https://tools.hmcts.net/confluence/display/HMAN/How+to+create+a+Support+Request+via+Slackbot+and+minimum+data+set"
+                        "url": "https://hmcts.atlassian.net/wiki/spaces/HMAN/pages/281250521/How+to+create+a+Support+Request+via+Slackbot+and+minimum+data+set"
                     },
                     {
                         "type": "button",
@@ -397,7 +398,7 @@ function openHelpRequestBlocks() {
                             "type": "plain_text",
                             "text": "User Config Request"
                         },
-                        "url": "https://tools.hmcts.net/confluence/pages/viewpage.action?pageId=375685806#ProductionUserManagement-RaisingrequestsintheformofJIRATickets"
+                        "url": "https://hmcts.atlassian.net/wiki/spaces/RCCD/pages/277948817/Production+-+User+Management#Raising-requests-in-the-form-of-JIRA-Tickets"
                     },
                     {
                         "type": "button",
@@ -405,7 +406,7 @@ function openHelpRequestBlocks() {
                             "type": "plain_text",
                             "text": "Definition Import Request"
                         },
-                        "url": "https://tools.hmcts.net/confluence/display/RCCD/Production:+Case+Configuration"
+                        "url": "https://hmcts.atlassian.net/wiki/spaces/RCCD/pages/277950284/Production+Case+Configuration"
                     }
                 ]
             },
@@ -652,7 +653,7 @@ function openBannerRequestBlocks() {
                             "type": "plain_text",
                             "text": "Banner Request Guidance"
                         },
-                        "url": "https://tools.hmcts.net/confluence/display/EXUI/How+to+request+a+service+message+banner+on+Slack"
+                        "url": "https://hmcts.atlassian.net/wiki/spaces/EXUI/pages/276988140/How+to+request+a+service+message+banner+on+Slack"
                     }
                 ]
             },
@@ -787,7 +788,7 @@ function openBannerRequestBlocks() {
                         "emoji": true
                     },
                     "value": "click_me_123",
-                    "url": "https://tools.hmcts.net/confluence/display/EXUI/IDAM+Role+List",
+                    "url": "https://hmcts.atlassian.net/wiki/spaces/EXUI/pages/276989105/IDAM+Role+List",
                     "action_id": "button-action"
                 }
             },
