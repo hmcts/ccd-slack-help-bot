@@ -33,7 +33,6 @@ const app = new App({
     token: config.get('secrets.cftptl-intsvc.ccd-slack-bot-token'), //disable this if enabling OAuth in socketModeReceiver
     // logLevel: LogLevel.DEBUG,
     appToken: config.get('secrets.cftptl-intsvc.ccd-slack-app-token'),
-    cloudId: config.get('secrets.cftptl-intsvc.jira-cloud-id'),
     socketMode: true,
 });
 

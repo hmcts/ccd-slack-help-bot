@@ -23,7 +23,7 @@ const {
 const jiraApiUrl = new URL(config.get("jira.api-url"));
 if (config.has("jira.cloud_id")) {
   jiraApiUrl.pathname = `${jiraApiUrl.pathname.replace(/\/+$/, "")}/${config.get(
-    "jira.cloud_id",
+    "secrets.cftptl-intsvc.jira-cloud-id",
   )}`;
 }
 
