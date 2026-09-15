@@ -21,7 +21,7 @@ const {
 } = require('../supportConfig');
 
 const jiraApiUrl = new URL(config.get("jira.api-url"));
-if (config.has("jira.cloud_id")) {
+if (config.has("secrets.cftptl-intsvc.jira-cloud-id")) {
   jiraApiUrl.pathname = `${jiraApiUrl.pathname.replace(/\/+$/, "")}/${config.get(
     "secrets.cftptl-intsvc.jira-cloud-id",
   )}`;
