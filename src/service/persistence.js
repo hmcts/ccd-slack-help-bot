@@ -148,7 +148,9 @@ async function createHelpRequestInJira(requestType, summary, project) {
             },
             description: undefined,
             environment: [ { value: "No Environment" } ], // Environment - TODO Make this configurable and select appropriate value based on selection
-            parent: getEpicName(requestType)
+            parent: {
+                      key: getEpicName(requestType)
+                    }
         }
     });
 }
