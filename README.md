@@ -28,6 +28,10 @@ Optional Xui Component and Users labels appear alongside the output as metadata.
 Copy the JSON by selecting its text. **Back** returns to the original request
 form; formatting pasted text does not create a Jira ticket or submit a request.
 
+To preview the forms without API credentials, use the checked-in
+[Slack UI examples](examples/slack/README.md). Regenerate them from the current
+form builders with `npm run examples:banner`.
+
 ## Creating the Slack App 
 <details>
   <summary>Steps</summary>
