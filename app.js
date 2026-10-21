@@ -12,8 +12,11 @@ const {
     helpRequestRaised,
     openHelpRequestBlocks,
     openBannerRequestBlocks,
+    bannerJsonOutputBlocks,
+    openPastedBannerFormatter,
     unassignedOpenIssue,
 } = require('./src/messages');
+const {bannerConfigurationFromValues, bannerConfigurationFromText} = require('./src/bannerConfiguration');
 const {App, LogLevel, SocketModeReceiver} = require('@slack/bolt');
 const crypto = require('crypto')
 const {
@@ -224,7 +227,55 @@ app.view('create_help_request', async ({ack, body, view, client}) => {
 
 });
 
+app.action('open_pasted_banner_formatter', async ({ack, body, client}) => {
+    await ack();
+    try {
+        await client.views.push({trigger_id: body.trigger_id, view: openPastedBannerFormatter()});
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+app.view('format_pasted_banner_request', async ({ack, view}) => {
+    let result;
+    try {
+        result = bannerConfigurationFromText(view.state.values.pastedRequest?.request_text?.value);
+    } catch (error) {
+        await ack({response_action: 'errors', errors: {pastedRequest: error.message}});
+        return;
+    }
+    await ack({response_action: 'update', view: openPastedBannerFormatter({result})});
+});
+
+app.action('generate_banner_json', async ({ack, body, client}) => {
+    await ack();
+    const values = body.view.state.values;
+    let configuration;
+    let error;
+    try {
+        configuration = bannerConfigurationFromValues(values);
+    } catch (validationError) {
+        error = validationError.message;
+    }
+    try {
+        await client.views.update({
+            view_id: body.view.id,
+            hash: body.view.hash,
+            view: openBannerRequestBlocks({values, configuration, error})
+        });
+    } catch (updateError) {
+        console.error(updateError);
+    }
+});
+
 app.view('create_banner_request', async ({ack, body, view, client}) => {
+    let configuration;
+    try {
+        configuration = bannerConfigurationFromValues(view.state.values);
+    } catch (error) {
+        await ack({response_action: 'errors', errors: error.fields});
+        return;
+    }
     // Acknowledge the view_submission event
     await ack();
 
@@ -296,7 +347,7 @@ app.view('create_banner_request', async ({ack, body, view, client}) => {
             channel: reportChannel,
             thread_ts: result.message.ts,
             text: 'New banner request raised',
-            blocks: bannerRequestDetails(bannerRequest)
+            blocks: [...bannerRequestDetails(bannerRequest), ...bannerJsonOutputBlocks(configuration)]
         });
         console.log(`Message posted to channel...`)
         const permaLink = (await client.chat.getPermalink({
