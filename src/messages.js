@@ -625,8 +625,42 @@ function openHelpRequestBlocks() {
     }
 }
 
-function openBannerRequestBlocks() {
-    return {
+function bannerJsonOutputBlocks(configuration) {
+    return [
+        {type: 'section', text: {type: 'plain_text', text: 'JSON output — select and copy the JSON below.'}},
+        {type: 'rich_text', elements: [{type: 'rich_text_preformatted', elements: [
+            {type: 'text', text: JSON.stringify(configuration, null, 2)}
+        ]}]}
+    ];
+}
+
+function openPastedBannerFormatter({result} = {}) {
+    const modal = {
+        type: 'modal', callback_id: 'format_pasted_banner_request',
+        title: {type: 'plain_text', text: 'Banner JSON Formatter'},
+        submit: {type: 'plain_text', text: 'Generate JSON'},
+        close: {type: 'plain_text', text: 'Back'},
+        blocks: [
+            {type: 'section', text: {type: 'plain_text', text: 'Paste a labelled request to generate JSON. This formatter does not submit a banner request.'}},
+            {type: 'input', block_id: 'pastedRequest',
+                label: {type: 'plain_text', text: 'Paste the full request block'},
+                element: {type: 'plain_text_input', action_id: 'request_text', multiline: true,
+                    placeholder: {type: 'plain_text', text: 'English Phrase: ...\nWelsh Phrase: ...\nXui Component: both\nUsers: ...\nRoles: ...\nStart Date: 2026-03-11\nEnd Date: 2026-03-12'}},
+                hint: {type: 'plain_text', text: 'Uses the first two times in the English phrase. Missing times default to 00:00 and 23:59. Roles can be “all” or “all users”.'}
+            }
+        ]
+    };
+    if (result) {
+        modal.blocks.push(
+            {type: 'context', elements: [{type: 'plain_text', text: stringTrim(`Component: ${result.component} | Users: ${result.users}`, 2000)}]},
+            ...bannerJsonOutputBlocks(result.configuration)
+        );
+    }
+    return modal;
+}
+
+function openBannerRequestBlocks({values = {}, configuration, error} = {}) {
+    const modal = {
         "title": {
             "type": "plain_text",
             "text": "Banner Message request"
@@ -924,7 +958,42 @@ function openBannerRequestBlocks() {
         ],
         "type": "modal",
         "callback_id": "create_banner_request"
+    };
+    const timeFields = ['start', 'end'].map(boundary => ({
+        type: 'input',
+        block_id: `${boundary}Time`,
+        optional: true,
+        element: {type: 'plain_text_input', action_id: 'title', placeholder: {type: 'plain_text', text: 'HH:mm, e.g. 19:00'}},
+        label: {type: 'plain_text', text: `${boundary === 'start' ? 'Start' : 'End'} time (optional override)`},
+        hint: {type: 'plain_text', text: `If blank, use the ${boundary === 'start' ? 'first' : 'second'} time in the English phrase, or ${boundary === 'start' ? '00:00' : '23:59'} if absent. No timezone conversion is applied.`}
+    }));
+    modal.blocks.splice(modal.blocks.findIndex(block => block.block_id === 'team'), 0, ...timeFields);
+
+    // Keep field IDs stable so Slack preserves input values during views.update.
+    // Section accessories need their selected values explicitly restored.
+    for (const block of modal.blocks) {
+        const state = values[block.block_id];
+        if (block.accessory?.type === 'datepicker' && state?.title?.selected_date) {
+            block.accessory.initial_date = state.title.selected_date;
+        }
+        if (block.accessory?.type === 'static_select' && state?.component?.selected_option) {
+            block.accessory.initial_option = state.component.selected_option;
+        }
     }
+    modal.blocks.push(
+        {type: 'divider'},
+        {type: 'actions', block_id: 'banner_json_actions', elements: [
+            {type: 'button', action_id: 'generate_banner_json', text: {type: 'plain_text', text: 'Generate JSON'}},
+            {type: 'button', action_id: 'open_pasted_banner_formatter', text: {type: 'plain_text', text: 'Format pasted request'}}
+        ]},
+        {type: 'context', elements: [{type: 'plain_text', text: 'Generate JSON after completing the phrases, roles and dates. Generate again after changing any fields.'}]}
+    );
+    if (error) {
+        modal.blocks.push({type: 'section', text: {type: 'plain_text', text: error}});
+    } else if (configuration) {
+        modal.blocks.push(...bannerJsonOutputBlocks(configuration));
+    }
+    return modal;
 }
 
 
@@ -935,4 +1004,6 @@ module.exports.helpRequestDetails = helpRequestDetails;
 module.exports.bannerRequestDetails = bannerRequestDetails;
 module.exports.openHelpRequestBlocks = openHelpRequestBlocks;
 module.exports.openBannerRequestBlocks = openBannerRequestBlocks;
+module.exports.bannerJsonOutputBlocks = bannerJsonOutputBlocks;
+module.exports.openPastedBannerFormatter = openPastedBannerFormatter;
 module.exports.extractSlackLinkFromText = extractSlackLinkFromText;

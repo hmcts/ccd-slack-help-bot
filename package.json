@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "watch": "nodemon app.js",
+    "examples:banner": "node scripts/generate-banner-ui-examples.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "CCD",

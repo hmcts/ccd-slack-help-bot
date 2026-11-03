@@ -1,0 +1,77 @@
+{
+  "type": "modal",
+  "callback_id": "format_pasted_banner_request",
+  "title": {
+    "type": "plain_text",
+    "text": "Banner JSON Formatter"
+  },
+  "submit": {
+    "type": "plain_text",
+    "text": "Generate JSON"
+  },
+  "close": {
+    "type": "plain_text",
+    "text": "Back"
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "text": {
+        "type": "plain_text",
+        "text": "Paste a labelled request to generate JSON. This formatter does not submit a banner request."
+      }
+    },
+    {
+      "type": "input",
+      "block_id": "pastedRequest",
+      "label": {
+        "type": "plain_text",
+        "text": "Paste the full request block"
+      },
+      "element": {
+        "type": "plain_text_input",
+        "action_id": "request_text",
+        "multiline": true,
+        "placeholder": {
+          "type": "plain_text",
+          "text": "English Phrase: ...\nWelsh Phrase: ...\nXui Component: both\nUsers: ...\nRoles: ...\nStart Date: 2026-03-11\nEnd Date: 2026-03-12"
+        },
+        "initial_value": "English Phrase: The Immigration and Asylum Service will be unavailable from 7pm on Wednesday 11 March 2026 to 5am on Thursday 12 March 2026 due to essential maintenance\n\nWelsh Phrase: Ni fydd y Gwasanaeth Mewnfudo a Lloches ar gael o 7pm dydd Mercher 11 Mawrth 2026 tan 5am dydd Iau 12 Mawrth 2026 oherwydd gwaith cynnal a chadw hanfodol\n\nXui Component: both\n\nUsers: Professional Users / Staff / Judiciary\n\nRoles: All IA Idam roles: caseworker-ia caseworker-ia-admofficer caseworker-ia-bails caseworker-ia-caseofficer caseworker-ia-homeofficeapc caseworker-ia-homeofficebail caseworker-ia-homeofficelart caseworker-ia-homeofficepou caseworker-ia-iacjudge caseworker-ia-judiciary caseworker-ia-legalrep-solicitor caseworker-ia-readonly caseworker-ia-respondentofficer caseworker-ia-srcaseofficer caseworker-ia-system caseworker-ia-system-access caseworker-iac-bulkscan caseworker-iac-systemupdate\n\nStart Date: 2026-03-11\n\nEnd Date: 2026-03-12"
+      },
+      "hint": {
+        "type": "plain_text",
+        "text": "Uses the first two times in the English phrase. Missing times default to 00:00 and 23:59. Roles can be “all” or “all users”."
+      }
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "plain_text",
+          "text": "Component: both | Users: Professional Users / Staff / Judiciary"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "plain_text",
+        "text": "JSON output — select and copy the JSON below."
+      }
+    },
+    {
+      "type": "rich_text",
+      "elements": [
+        {
+          "type": "rich_text_preformatted",
+          "elements": [
+            {
+              "type": "text",
+              "text": "{\n  \"begin\": \"2026-03-11T19:00:00\",\n  \"end\": \"2026-03-12T05:00:00\",\n  \"index\": 1,\n  \"message_cy\": \"Ni fydd y Gwasanaeth Mewnfudo a Lloches ar gael o 7pm dydd Mercher 11 Mawrth 2026 tan 5am dydd Iau 12 Mawrth 2026 oherwydd gwaith cynnal a chadw hanfodol\",\n  \"message_en\": \"The Immigration and Asylum Service will be unavailable from 7pm on Wednesday 11 March 2026 to 5am on Thursday 12 March 2026 due to essential maintenance\",\n  \"roles\": \"(caseworker-ia)|(caseworker-ia-admofficer)|(caseworker-ia-bails)|(caseworker-ia-caseofficer)|(caseworker-ia-homeofficeapc)|(caseworker-ia-homeofficebail)|(caseworker-ia-homeofficelart)|(caseworker-ia-homeofficepou)|(caseworker-ia-iacjudge)|(caseworker-ia-judiciary)|(caseworker-ia-legalrep-solicitor)|(caseworker-ia-readonly)|(caseworker-ia-respondentofficer)|(caseworker-ia-srcaseofficer)|(caseworker-ia-system)|(caseworker-ia-system-access)|(caseworker-iac-bulkscan)|(caseworker-iac-systemupdate)\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

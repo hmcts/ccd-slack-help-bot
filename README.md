@@ -4,6 +4,34 @@ Based off of https://github.com/hmcts/slack-help-bot
 
 Listens for new posts in a designated Slack channel and raises a coresponding request in Jira.
 
+Banner requests include a **Generate JSON** button. Complete the English and Welsh
+phrases, explicit IDAM role IDs, and start/end dates, then generate and copy the
+formatted JSON from the output section. Generate again after editing the form.
+The same JSON is generated from the final values and posted in the request thread
+on submission.
+
+Times use the first two times in the English phrase, such as
+`7pm ... 5am` or `19:00 ... 05:00`. Missing start/end times default to `00:00`
+and `23:59`. Optional start/end time fields accept `HH:mm`
+and override inferred times. Dates come from the date pickers; timestamps have
+no timezone suffix or conversion. Roles can be separated by spaces, commas, or
+`|`, with an optional descriptive prefix ending in `:`. A description such as
+“All IA Idam roles” requires the actual role IDs to follow it. Entering `all` or
+`all users` produces the roles pattern `.+`. The JSON uses
+`index: 1`; component and user group selections remain request details and are
+not additional JSON properties.
+
+**Format pasted request** opens a separate formatter for labelled plain text
+requests, using the same conversion rules. Paste the English Phrase, Welsh
+Phrase, Roles, Start Date and End Date labels, then click **Generate JSON**.
+Optional Xui Component and Users labels appear alongside the output as metadata.
+Copy the JSON by selecting its text. **Back** returns to the original request
+form; formatting pasted text does not create a Jira ticket or submit a request.
+
+To preview the forms without API credentials, use the checked-in
+[Slack UI examples](examples/slack/README.md). Regenerate them from the current
+form builders with `npm run examples:banner`.
+
 ## Creating the Slack App 
 <details>
   <summary>Steps</summary>
