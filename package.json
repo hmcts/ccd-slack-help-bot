@@ -13,7 +13,7 @@
   "dependencies": {
     "@hmcts/properties-volume": "^1.4.0",
     "@slack/bolt": "^4.7.3",
-    "config": "^4.4.1",
+    "config": "^5.0.0",
     "jira-client": "^8.2.2",
     "js-yaml": "^4.2.0"
   },
